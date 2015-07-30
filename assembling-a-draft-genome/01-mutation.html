@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Finding Causative Mutations: Finding Causative Mutations With A Candidate SNP Approach</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <!-- ><link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/> -->
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+      <!--   <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+      	</a> -->
+      	<a href="http://usegalaxy.org" title="Galaxy Community Conference 2015 Training Course - Finding Causative Mutations Using A Candidate SNP Approach">
+      	<img alt="Galaxy Logo" src="img/galaxy.png">	
+      	<a href="gcc2015.tsl.ac.uk" title="Galaxy Community Conference 2015 @ TSL">
+      	<img alt="GCC 2015" src="img/castle.png"> 
+        </a>
+        <span style="font-family:'Open Sans',sans-serif;font-size: 1.8em; font-weight: 400;"> GCC 2015 </span> <span><Finding Causative Mutations With A Candidate SNP approach</span>
+      </div>
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+                    <a href="index.html"><h1 class="title">Finding Causative Mutations With A Candidate SNP Approach</h1></a>
+          <h2 class="subtitle">Mutagenesis and Genetic Screens</h2>
+          <section class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Mutagens mess up a genome</li>
+<li>EMS creates Single Nucleotide Polymorphisms of C-&gt;T or G-&gt;A Transition (mostly)</li>
+<li>Careful crossing gives us homozygous mutant lines</li>
+<li>Genetic screens select lines with changes related to our interest</li>
+</ul>
+</div>
+</section>
+<h2 id="mutagenesis-with-ems">Mutagenesis with EMS</h2>
+<p>The first step is to mutagenise a population of organisms, or cells or similar. Mutagenesis is basically causing damage to DNA. Lot’s of things can do this, Wikipedia has a great page on <a href="https://en.wikipedia.org/wiki/Mutagen">mutagens</a>. In plant genetics, the mutagen we typically use for changing single nucleotides in DNA, things we call point mutations or Single Nucleotide Polymorphisms (SNPs), is EMS - <a href="https://en.wikipedia.org/wiki/Ethyl_methanesulfonate">Ethyl methanesulfonate</a>. EMS will predominantly make C’s change to T’s and G’s change to A’s. These mutations are distributed fairly uniformly throughout the genome.</p>
+<p>In practice we take a load of plant seeds and soak them in a solution of EMS. The EMS soaks in and damages the plant’s DNA.</p>
+<p>This damages the DNA in <strong>some</strong> but <strong>not all</strong> of the cells in the seed.</p>
+<h2 id="getting-a-population-homozygous-for-ems-induced-mutations">Getting a population homozygous for EMS induced mutations</h2>
+<p>We grow up the seed (let’s call the plants that grow up the M1 generation) and the cells in those M1 plants that descended from the mutagenised cells carry the mutations. Sometimes these will be cells in the germline - ones that beget seeds. The progeny of the M1 plants, that grow from mutation carrying seeds (let’s call these progeny the M2) will all grow up with the mutation <strong>in every cell</strong> and eventually, by identifying the progeny plants carefully, we can get a population of plants which are homozygous for all the EMS SNP mutations we induced.</p>
+<div class="figure">
+<img src="img/nrg730-i2.gif" alt="A plant mutagenesis - or inducing heritable mutations - from Page &amp; Grossniklaus, Nature Reviews Genetics 3, 124-136 doi:10.1038/nrg730" />
+<p class="caption">A plant mutagenesis - or ‘inducing heritable mutations’ - from Page &amp; Grossniklaus, Nature Reviews Genetics 3, 124-136 doi:10.1038/nrg730</p>
+</div>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h2 id="this-same-principle-is-true-for-any-organism"><span class="glyphicon glyphicon-pushpin"></span>This same principle is true for any organism</h2>
+</div>
+<div class="panel-body">
+<p>Whatever you want to do mutational genomics with, you will need to:</p>
+<ol style="list-style-type: decimal">
+<li>mutate</li>
+<li>select</li>
+<li>cross</li>
+<li>screen</li>
+</ol>
+</div>
+</aside>
+<h2 id="genetic-screens">Genetic screens</h2>
+<p>Once we have a mutagenised population we can start to select the individuals in that population that show some change in the phenotype of interest, say flowering time. We can use further crosses to bring in extra variation or use the natural variation - both of which are heterozygous - while keeping the homozygous mutation(s) that is (are) causing the phenotype by constantly selecting for offspring that show the phenotype of interest everytime we carry out crosses.</p>
+<div class="figure">
+<img src="img/tall_plant.jpg" alt="One of these plants is affected in the pathways that control flowering time - the right hand plant flowers early. Source: Detlef Weigel" />
+<p class="caption">One of these plants is affected in the pathways that control flowering time - the right hand plant flowers early. Source: Detlef Weigel</p>
+</div>
+<h2 id="recombination-during-crossing-causes-changes-in-snp-density-away-from-the">Recombination during crossing causes changes in SNP density away from the</h2>
+<p>All these crosses cause recombination in the chromosomes that bring in homologous parts from the line being used to cross. This happens at a greater frequency away from the mutation that we are selecting for such that regions further from the selected mutation carry fewer and fewer of the homozygous mutations.</p>
+<div class="figure">
+<img src="img/ngm.png" alt="Consider crossing two chromosomes. Recombination causes the parts furthest from the selected mutation to lose the homozygous mutations as a function of distance from the selected mutation. Source: Ryan Austin, http://bar.utoronto.ca/ngm/description.html" />
+<p class="caption">Consider crossing two chromosomes. Recombination causes the parts furthest from the selected mutation to lose the homozygous mutations as a function of distance from the selected mutation. Source: Ryan Austin, http://bar.utoronto.ca/ngm/description.html</p>
+</div>
+<p>This statistical difference, a region of high homozygous SNPs around the mutation is what we will use to identify the SNPs that cause our phenotype of interest.</p>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="challenge"><span class="glyphicon glyphicon-pencil"></span>Challenge</h2>
+</div>
+<div class="panel-body">
+<p>If we aligned HTS reads from a mutagenesis to a reference genome and represented them like this:</p>
+<pre class="input"><code>
+ read 1                            CGATCGATCGCATCT   GATCGATCGACCG   read 4
+ read 2                         GATCGATCGCAT     ATACGATCGATCGAC     read 5
+ read 3                  CGTGCGCGATCGA              CGATCGATCGATCGAT read 6
+ reference   ACTACGTACGATCGTGCGCGATCtATCGCATCTAGTATACGATCGATCGAtCGATCGATCGATG
+ SNPs                               X                          Z
+</code></pre>
+<ol style="list-style-type: decimal">
+<li>What is the SNP type at position X?</li>
+<li>What is the SNP type at position Z?</li>
+</ol>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="challenge-1"><span class="glyphicon glyphicon-pencil"></span>Challenge</h2>
+</div>
+<div class="panel-body">
+<p>In a mutagenesis, after crosses, why are we concerned with homozygous SNPS?</p>
+<ol style="list-style-type: decimal">
+<li>They are the SNPs we induced with mutagens and carefully selected for with crosses.</li>
+<li>They are the general ‘background’ SNPs, so are a good control.</li>
+<li>Homozygous SNPs ALWAYS cause a phenotypic effect.</li>
+<li>Homozygous SNPs are easier to detect.</li>
+</ol>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="challenge-2"><span class="glyphicon glyphicon-pencil"></span>Challenge</h2>
+</div>
+<div class="panel-body">
+<p>Imagine you work on an organism with a single chromosome and that you have just put it through a mutagenesis and series of crosses. Draw the distribution of homozygous and heterozygous SNPs you would expect around a causative mutation.</p>
+</div>
+</section>
+        </div>
+      </div>
+      </article>
+      <div class="footer">
+        <!-- <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a> -->
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <!-- <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a> -->
+        <a class="label swc-blue-bg" href="mailto:dan.maclean@tsl.ac.uk">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Finding Causative Mutations: Finding Causative Mutations With A Candidate SNP Approach.</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <!-- ><link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/> -->
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+      <!--   <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+      	</a> -->
+      	<a href="http://usegalaxy.org" title="Galaxy Community Conference 2015 Training Course - Finding Causative Mutations Using A Candidate SNP Approach">
+      	<img alt="Galaxy Logo" src="img/galaxy.png">	
+      	<a href="gcc2015.tsl.ac.uk" title="Galaxy Community Conference 2015 @ TSL">
+      	<img alt="GCC 2015" src="img/castle.png"> 
+        </a>
+        <span style="font-family:'Open Sans',sans-serif;font-size: 1.8em; font-weight: 400;"> GCC 2015 </span> <span><Finding Causative Mutations With A Candidate SNP approach</span>
+      </div>
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+                    <h1 class="title">Finding Causative Mutations With A Candidate SNP Approach.</h1>
+          <p>In this lesson we will look at the powerful technique of Mutational Genomics. This is possibly the coolest thing ever as it involves mutating a living organism so that it is different from other things and then sequencing the genome to pinpoint the exact changes that cause the difference.</p>
+<section class="prereq panel panel-warning">
+<div class="panel-heading">
+<h2 id="prerequisites"><span class="glyphicon glyphicon-education"></span>Prerequisites</h2>
+</div>
+<div class="panel-body">
+<p>For this course you are going to need to know some basic genetics (an Intro or 101- style course will do) and you’ll need to know some of the basic outputs from High-throughput sequencing (HTS) machines. Try these links for information.</p>
+<ol style="list-style-type: decimal">
+<li><a href="http://www.ebi.ac.uk/training/online/course/ebi-next-generation-sequencing-practical-course/what-you-will-learn/what-next-generation-dna-">EBI Train online - NGS (HTS)</a></li>
+<li><a href="https://en.wikipedia.org/?title=Genetics#Molecular_basis_for_inheritance">Wikipedia - Molecular basis of inheritance</a></li>
+</ol>
+</div>
+</section>
+<p>In this lesson we don’t have the scope or chemicals to do the mutation bit, so we’ll pick up with the genomics and use Galaxy and Galaxy tools to carry out the analysis that takes us from sequence data to actual candidate mutations in the genome sequence.</p>
+<p>This lesson will use a <em>virtual machine</em> (a small computer-within-a-computer) system to get you a working install of Galaxy and all the data that we need for the lesson.</p>
+<section class="getready panel panel-warning">
+<div class="panel-heading">
+<h2 id="getting-ready"><span class="glyphicon glyphicon-check"></span>Getting ready</h2>
+</div>
+<div class="panel-body">
+<p>It is absolutely imperative that you have downloaded and installed these two items:</p>
+<ol style="list-style-type: decimal">
+<li>Virtual Box software from <a href="https://www.virtualbox.org/" class="uri">https://www.virtualbox.org/</a></li>
+<li>The lesson specific virtual machine from <a href="https://haventuploaded.org">dunno.com</a></li>
+</ol>
+</div>
+</section>
+<h2 id="topics">Topics</h2>
+<ol style="list-style-type: decimal">
+<li><a href="motivation.html">Why Do We Need Mutational Genomics?</a></li>
+<li><a href="01-mutation.html">Mutagenesis and Genetic Screens</a></li>
+<li><a href="02-preprocessing.html">Pre-Processing Sequence Data</a></li>
+<li><a href="03-aligning.html">Aligning Reads To A Reference</a></li>
+<li><a href="04-calling-snps.html">Finding SNPs With An Alignment</a></li>
+<li><a href="05-candidates.html">Visualising SNPs To Find Candidates</a></li>
+</ol>
+<h2 id="other-resources">Other Resources</h2>
+<ul>
+<li><a href="reference.html">Reference</a></li>
+</ul>
+        </div>
+      </div>
+      </article>
+      <div class="footer">
+        <!-- <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a> -->
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <!-- <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a> -->
+        <a class="label swc-blue-bg" href="mailto:dan.maclean@tsl.ac.uk">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>

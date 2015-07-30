@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Finding Causative Mutations: Finding Causative Mutations With A Candidate SNP Approach</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <!-- ><link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/> -->
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+      <!--   <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+      	</a> -->
+      	<a href="http://usegalaxy.org" title="Galaxy Community Conference 2015 Training Course - Finding Causative Mutations Using A Candidate SNP Approach">
+      	<img alt="Galaxy Logo" src="img/galaxy.png">	
+      	<a href="gcc2015.tsl.ac.uk" title="Galaxy Community Conference 2015 @ TSL">
+      	<img alt="GCC 2015" src="img/castle.png"> 
+        </a>
+        <span style="font-family:'Open Sans',sans-serif;font-size: 1.8em; font-weight: 400;"> GCC 2015 </span> <span><Finding Causative Mutations With A Candidate SNP approach</span>
+      </div>
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+                    <a href="index.html"><h1 class="title">Finding Causative Mutations With A Candidate SNP Approach</h1></a>
+          <h2 class="subtitle">Aligning Reads To A Reference</h2>
+          <section class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Understanding Alignment</li>
+<li>Know how to run the correct BWA alignment</li>
+<li>Understand the SAM/BAM format and relationship</li>
+</ul>
+</div>
+</section>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h2 id="culture-clash"><span class="glyphicon glyphicon-pushpin"></span>Culture clash</h2>
+</div>
+<div class="panel-body">
+<p><strong>If you’re a bioinformatician</strong> - you may be wondering why I’m not using the words ‘mapping’ reads here. Well, the geneticists in the crowd have a much older technique called <a href="reference.html#genetic_mapping">mapping</a> that does something completely different. I have honestly had conversations where it has been insisted that I can’t possibly map a read. Don’t suffer as I did.</p>
+<p><strong>If you’re a geneticist</strong> - bioinformaticians claim they can do amazing things with reads, mapping them down to the single read level! Of course they usually just mean they’re aligning them to whatever reference sequence they have.</p>
+</div>
+</aside>
+<p>Alignment is the process of finding the position on a genome that a read best matches to, so is likely to have come from.</p>
+<p>There are many tools for aligning reads, (too many probably). One of the best general ones is <a href="reference.html#bwa">BWA</a>. BWA is a high-throughput sequence aligner used to align relatively short sequences to a reference genome. It uses the <a href="reference.html#burrows_wheeler_transform">Burrows-Wheeler Transform</a> reduce the amount of memory needed to align reads by creating a compressed index of the reference sequence. It contains two algorithms for alignment, one <code>aln</code> for short reads up to around 200 bp with low error rate and another <code>mem</code> for longer reads. Both are very fast and accurate.</p>
+<p>BWA is complicated and there are lots of options to set. The crucial things we are going to need are a reference genome, and a set of reads.</p>
+<p>Often, a sequencing strategy will use <a href="reference.html#paired-end_reads">paired-end reads</a>, where we know the distance between two reads and we can set that as a parameter. Usually the reads from a paired strategy come in two files, one of the pair in a ‘left’ file, and the other in a ‘right’ file.</p>
+<p>BWA has a lot of options, here’s some important ones:</p>
+<ol style="list-style-type: decimal">
+<li><code>Maximum edit distance</code> - is the maximum number of nucleotides in a read that can mis-match with the reference and the read still be aligned.</li>
+<li><code>Maximum number of gap opens</code>- refers to the amount of insertions that can occur across a read.</li>
+<li><code>Disallow insertion/deletion within some bp towards the end</code> - allows for the fact that sequence quality deteriorates towards the end of a sequence and the user might not want to trust indels in the last few bases of a read.</li>
+<li><code>Maximum insert size for a read pair to be considered as being mapped properly</code> - The insert size of reads is the distance between the outer ends of the two paired-end reads.</li>
+</ol>
+<p>The output format from BWA and most other aligners is <a href="reference.html#sam">SAM</a> (Sequence Alignment Map) format. The SAM format describes the alignment of sequenced reads to a reference sequence. It stores all the alignment information generated by BWA in a simple and compact format. It provides information about the position of the read in relation to the reference genome, the number and position of nucleotides that match to the genome and the position of indels.</p>
+<p>Here’s the top of a SAM file:</p>
+<pre class="output"><code>@HD VN:1.3  SO:coordinate
+@SQ SN:chloroplast  LN:154478
+@PG ID:bwa  PN:bwa  VN:0.7.10-r876-dirty    CL:bwa mem -t 1 -v 1
+chloroplast-1781    99  chloroplast 54  60  250M    =   374 570 TTA A?? NM:i:0  MD:Z:250    AS:i:250    XS:i:0
+chloroplast-757 163 chloroplast 66  60  250M    =   459 643 GCT A5? NM:i:6  MD:Z:46A20T65T56A23A2T32    AS:i:220    XS:i:0
+chloroplast-1781    147 chloroplast 374 60  250M    =   54  -570    ACT G:E NM:i:6  MD:Z:9T42G1G2G7C42A141  AS:i:220    XS:i:0
+chloroplast-703 163 chloroplast 437 60  250M    =   794 607 AGC ??? NM:i:8  MD:Z:68T2C20C68T16G9A30A8G21    AS:i:210    XS:i:0</code></pre>
+<ol style="list-style-type: decimal">
+<li>The first few lines start with stuff like <code>@SQ SN</code> which described thigs like program parameters followed by the name of the sequences in the reference file (<code>chloroplast</code>) and the length of the sequence (154478).</li>
+<li>Every line after that corresponds to each read that BWA handled.</li>
+<li>Each line starts with the name of the read and has a number of columns of data after it.</li>
+<li>In the 3rd column we can see which chromosome our read has been mapped to and the position of the first mapped base in column 4. An unmapped read will have a * in column 3 and zero in column 4.</li>
+<li>The 5th column is the mapping quality, a score quantifying the probability that a read is misplaced.</li>
+<li>The 6th column is the CIGAR string and consists of numbers followed by an upper-case letter (the operator), which describes the alignment.</li>
+</ol>
+<p>As an example, a CIGAR string of <code>36M3D40M</code> means 36 matching nucleotides, followed by 3 deletions and ending in 40 matches.</p>
+<p>A BAM file is a highly compressed, indexed binary version of SAM and through a library of different tools, allows fast, random access to the alignment. Some Galaxy tools will automatically convert the output from aligners to BAM format for you.</p>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="align-paired-end-reads-to-a-reference-genome"><span class="glyphicon glyphicon-pencil"></span>1. Align Paired-End Reads To A Reference Genome</h2>
+</div>
+<div class="panel-body">
+<p>Use the two sets of paired reads in the <code>Alignment</code> shared data library and the <code>ATH1_chloroplast</code> reference genome sequence, again these are sequences from the chloroplast genome of the model plant <em>Arabidopsis</em> . One set of reads, <code>MS</code>, are from an Illumina MiSeq machine, are 250 nt long and have a fragment length of 650 nt. The others, <code>GA2</code> are from an Illumina GAII machine, are 75 nt long and have a fragment length of 350. For the alignment you’ll be using a reference from the history.</p>
+<ol style="list-style-type: decimal">
+<li>Which algorithm should you use for each set of reads?</li>
+<li>Align each of these with the BWA program in the <code>HTS Alignment</code> tools section. Choose an appropriate algorithm for each sequence set.</li>
+<li>Pick parameters to make the two alignments as accurate and equivalent as possible? Which should differ? Which should be the same?</li>
+<li>Check the results with the SAMtools <code>idxstats</code> tool and other alignment stats tools like <code>Flagstat</code> and <code>Stats</code> in <code>HTS SAMtools</code>. How do the results relate to what you know about the sequencing strategy? (What are the calculated insert sizes, what is the coverage?)</li>
+</ol>
+</div>
+</section>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h2 id="merge-alignments-into-one-bam"><span class="glyphicon glyphicon-pushpin"></span>Merge Alignments Into One BAM</h2>
+</div>
+<div class="panel-body">
+<p>After alignment of two read sets from different sequencing strategies, you might want to merge all of them into one BAM file so that you can work on them as one. This isn’t just more convenient, it lets you make use of the extra information from combining the reads into one coverage pileup when calling SNPs or visualising the alignment.</p>
+<p>Merging is a multi-stage process that can be done with <code>Picard</code>, the steps in Picard look like:</p>
+<ol style="list-style-type: decimal">
+<li>Remove duplicate reads</li>
+<li>Sort BAMs individually</li>
+<li>Merge BAMs</li>
+</ol>
+<p>Picard tools are available in the Galaxy Toolshed if you’d like to look, but I’ve skipped this step in the interests of time.</p>
+</div>
+</aside>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="alignment-quality"><span class="glyphicon glyphicon-pencil"></span>2. Alignment Quality</h2>
+</div>
+<div class="panel-body">
+<p>The <code>HTS SAMtools</code> tool <code>BAM-to-SAM</code>will allow you to turn the binary BAM file into a SAM file you can read.</p>
+<ol style="list-style-type: decimal">
+<li>How good do the individual alignments look overall? Can you tell from the output? Is it useful to look at single alignments one by one.</li>
+<li>Does the SAM specification <a href="reference.html#SAM">available here</a> give you any further information from which you can judge the alignments?</li>
+</ol>
+</div>
+</section>
+        </div>
+      </div>
+      </article>
+      <div class="footer">
+        <!-- <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a> -->
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <!-- <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a> -->
+        <a class="label swc-blue-bg" href="mailto:dan.maclean@tsl.ac.uk">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>
