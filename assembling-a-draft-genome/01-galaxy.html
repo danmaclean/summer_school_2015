@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Finding Causative Mutations: Assembling a draft genome in the Galaxy Interface</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <!-- ><link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/> -->
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+      <!--   <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+      	</a> -->
+      	<a href="http://summerschool.tsl.ac.uk" title="TSL Summer School 2015 - Finding Causative Mutations Using A Candidate SNP Approach">
+      	<img alt="TSL Logo" src="img/logo.png">	
+      	<a href="summerschool.tsl.ac.uk" title="Summer School 2015 @ TSL">
+        </a>
+        <span style="font-family:'Open Sans',sans-serif;font-size: 1.8em; font-weight: 400;">  </span> <span>Finding Causative Mutations With A Candidate SNP approach</span>
+      </div>
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+                    <a href="index.html"><h1 class="title">Assembling a draft genome in the Galaxy Interface</h1></a>
+          <h2 class="subtitle">Galaxy</h2>
+          <section class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Study the Galaxy Interface</li>
+<li>Understand the <code>History</code> and <code>Tool</code> panels</li>
+<li>Understand how to run tools</li>
+</ul>
+</div>
+</section>
+<h2 id="galaxy-analysis-view">Galaxy Analysis View</h2>
+<p>Once logged into Galaxy, you should see the main Analysis view, which looks this:</p>
+<div class="figure">
+<img src="img/analysis_view.png" alt="The Galaxy Analysis View" />
+<p class="caption">The Galaxy Analysis View</p>
+</div>
+<p>There are 4 areas in this view, they are coloured in below:</p>
+<ol style="list-style-type: decimal">
+<li>Tool Panel (left-side, pink box) - which carries the list of tools, under various headings</li>
+<li>History (right-side, purple box) - which carries the data items that you will work with</li>
+<li>View Navigator (top, yellow bar) - which allows you to select the current view</li>
+<li>Main Panel (centre, black-box) - which is where the tool interfaces and data views are shown</li>
+</ol>
+<div class="figure">
+<img src="img/analysis_view_colored.png" alt="Different sections of the Galaxy analysis view" />
+<p class="caption">Different sections of the Galaxy analysis view</p>
+</div>
+<h2 id="galaxy-tools">Galaxy Tools</h2>
+<p>Tools are the programs and scripts that we have added to Galaxy, that can be used for analyses. Galaxy tools are all kept in the left-hand pane of the analysis view, and are organised into tool categories. At the top you should see the Get Data category, for example. Let’s look at using a tool in Galaxy.</p>
+<h2 id="uploading-a-file-via-the-web-browser">Uploading a file via the Web-Browser</h2>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="challenge"><span class="glyphicon glyphicon-pencil"></span>Challenge</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Click the <code>Get Data</code> heading in the Tool Panel, and the <code>Upload File</code> from your computer tool.</li>
+<li>The tool interface should replace the splash page in the centre panel, and look like this: <img src="img/upload_interface.png" alt="The upload interface" /></li>
+<li>The tool’s options are now visible and can be selected. This tool has just a few, and are all described in the help at the bottom of the screen.</li>
+<li>Select <code>Choose File</code> and from the drop-down box select the file <code>small.gff</code> which should be in the <code>data</code> folder on the Desktop.</li>
+<li>Select Execute at the bottom of the tool interface to make the tool run. You should see a helpful message when the tool starts to run.</li>
+<li>When the tool is run, and the data are uploaded you should see a green box in the History panel.</li>
+</ul>
+</div>
+</section>
+<h2 id="history-items">History items</h2>
+<p>History items are the data that Galaxy is using, they live in the history in the order that they were created (lower items = older items) and have a number of attributes. Each history item is coloured according to state,</p>
+<ul>
+<li>Green = everything is fine with this data item and it can be used in tools. <img src="img/green.png" alt="A succesfully completed run" /></li>
+<li>Yellow = this job is still running. <img src="img/yellow.png" alt="A run still in progress" /></li>
+<li>Red = this job has failed and the data item can’t be used. <img src="img/red.png" alt="A failed run" /></li>
+<li>Grey = this job is queued and is waiting to run. <img src="img/grey.png" alt="An unstarted job" /></li>
+</ul>
+<p>History items can be downloaded from the History panel, using the icons in the top right of each History item. The eye icon allows you to preview the file contents in the Main Panel, the disk icon allows you to download the file. Galaxy History items are never deleted until you explicitly state that they can be, data items, analyses and jobs stay live even after you log-out and shut down the machine.</p>
+<h2 id="inspecting-history-items">Inspecting history items</h2>
+<p>Clicking on the name of the history item expands it and presents you with summary information and a preview of the data. We are shown that this file has 9 lines in it, is of format GFF and has database <code>Arabidopsis</code>. We can also see that Galaxy has automatically annotated the columns in the file and numbered them. <img src="img/item_close.png" alt="The item" /></p>
+<h2 id="editing-attributes-for-history-items">Editing attributes for history items</h2>
+<p>If Galaxy makes a mistake with any of our history items, such as giving a file the wrong format, we can alter the attributes manually. This is often useful to give the items a useful name. Let’s alter the attributes of our small.gff history item. Click the pencil icon in the top-right corner of the history item. You should see the form in the main panel as below:</p>
+<div class="figure">
+<img src="img/attributes.png" alt="The attributes of a history item" />
+<p class="caption">The attributes of a history item</p>
+</div>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="challenge-1"><span class="glyphicon glyphicon-pencil"></span>Challenge</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Alter the contents to reflect those in the picture above.</li>
+<li>Click ‘Save’ and observe the history item update in the History Panel.</li>
+</ul>
+</div>
+</section>
+<h2 id="galaxy-and-genome-sequence">Galaxy and Genome sequence</h2>
+<p>Genome sequence can be used within Galaxy, in some Galaxy instances it is installed or ‘built-in’ by the person who maintains Galaxy, but more often you will want to upload one to the history, using the <code>Get Data</code> tool. Other tools that need a reference genome will ask you whether you want to use the history or a ‘built-in’ or ‘build’.</p>
+<h2 id="a-basic-galaxy-task">A basic Galaxy task</h2>
+<p>The file that you uploaded is a GFF file. GFF stands for Generic Feature Format. It is a format that contains on every line, information about a genomic feature such as a gene. It includes information about the Chromosome or Contig a feature is on, the start and end of the feature and the feature’s strand. It doesn’t contain the nucleotide or protein sequence of the feature. A common task is to get the nucleotide sequence for a set of features, given the start and end co-ordinates in a genome. Doing this with Galaxy is very straight forward</p>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="challenge-2"><span class="glyphicon glyphicon-pencil"></span>Challenge</h2>
+</div>
+<div class="panel-body">
+<p>Use Galaxy tools to <em>fetch the fasta formatted sequence</em> of the genes represented in the file you uploaded, by <em>extracting genomic DNA</em> You will need to upload the reference genome, use the <code>p_infestans_t30-4.fa</code> file from the folder on the desktop. You will need to make sure that the type of the History item is GFF You will need to work out which tool to use. Have a good look in the Tools Panel and keep in mind the challenge title to find the category and tool you need.</p>
+</div>
+</section>
+        </div>
+      </div>
+      </article>
+      <div class="footer">
+        <!-- <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a> -->
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <!-- <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a> -->
+        <a class="label swc-blue-bg" href="mailto:dan.maclean@tsl.ac.uk">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>
