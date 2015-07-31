@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Finding Causative Mutations With A Candidate SNP Approach
-subtitle: Why Do We Need Mutational Genomics?
+title: Assembling a draft genome in the Galaxy Interface
+subtitle: Why genomics?
 ---
 
 ## A fork is not a hairbrush - it just has some similar properties
