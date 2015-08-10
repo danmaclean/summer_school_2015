@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Finding Causative Mutations With A Candidate SNP Approach
-subtitle: Why Do We Need Mutational Genomics?
+title: Finding Effector Genes and Proteins in DNA Sequence
+subtitle: What is an effector protein?
 ---
 
 ## A fork is not a hairbrush - it just has some similar properties
@@ -12,7 +12,7 @@ But these methods are actually only PREDICTIONS of function. Looking a bit like 
 
 ![Ariel thinks the fork is a brush, it does look like one...](img/ariel.jpg)
 
-## So finding the function of a gene isn't straightforward 
+## So finding the function of a gene isn't straightforward
 
 What makes things worse is that often we don't start with the gene itself. We start with some biological process and want to find genes with a role in that process.  Because our functional predictions aren't perfect we can't collect all the genes and start trying them out one-by-one.
 
@@ -23,7 +23,7 @@ What makes things worse is that often we don't start with the gene itself. We st
 
 With mutational genomics we deal initially with the effect of the gene on the whole organism. By performing mutagenesis on our favourite organism then carrying out a screen that selects individuals that have changed in the phenotype we are interested in, we have our first foothold. We can study those individuals and apply the principles of genetics, use modern high-throughput sequencing and bioinformatics tools to identify the gene causing that phenotype change (or at least ones involved in the process we have messed up).
 
-![One of these mice is not like the other mice - it has a phenotype change](img/obese-mouse.jpg) 
+![One of these mice is not like the other mice - it has a phenotype change](img/obese-mouse.jpg)
 
 ## Our objective
-This will be the focus of this workshop - how to go from samples identified in a genetic screen to a short-list of candidate genes using Galaxy tools and software. 
+This will be the focus of this workshop - how to go from samples identified in a genetic screen to a short-list of candidate genes using Galaxy tools and software.

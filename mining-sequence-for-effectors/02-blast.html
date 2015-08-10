@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Finding Causative Mutations: Finding Effector Genes and Proteins in DNA Sequence</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <!-- ><link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/> -->
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+      <!--   <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+      	</a> -->
+      	<a href="http://summerschool.tsl.ac.uk" title="TSL Summer School 2015 - Finding Causative Mutations Using A Candidate SNP Approach">
+      	<img alt="Galaxy Logo" src="img/logo.png">	
+      	<a href="summerschool.tsl.ac.uk" title="Summer School 2015 @ TSL">
+        </a>
+        <span style="font-family:'Open Sans',sans-serif;font-size: 1.8em; font-weight: 400;">  </span> <span>Finding Causative Mutations With A Candidate SNP approach</span>
+      </div>
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+                    <a href="index.html"><h1 class="title">Finding Effector Genes and Proteins in DNA Sequence</h1></a>
+          <h2 class="subtitle">Classifying with BLAST</h2>
+          <section class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Use BLAST to define a sensible cut-off</li>
+<li>Use a sensible cut-off to classify sequences into groups</li>
+</ul>
+</div>
+</section>
+<p>BLAST is the canonical sequence comparison tool and a very heavily used tool. Sometimes it is used too much and without proper attention to the weakness of the method. BLAST functions by creating an indexed database of segments of all the sequences provided to it, called ‘words’. The ‘words’ of the query sequence are then compared to the index and ‘hits’ found. These small hits are extended to find all the regions of identity. The regions of matches are called High Scoring Pairs (HSPs).</p>
+<p>In this part of the practical we will use BlastP (the protein sequence optimised variant of BLAST) to circumspectly examine sequence similarity between the known proteins and the candidates to identify potential matches. The basic principle is to compare all the known Avr proteins to each other using BLAST and examine some of the statistics, including the E-Score and the percent identity, to find a figure for the groups internal similarity. We can then use this threshold to classify our unknown proteins.</p>
+<p>Let’s use the version in Galaxy to</p>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="use-blast-to"><span class="glyphicon glyphicon-pencil"></span>Use BLAST to</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Load in the file ‘hpa_effectors.fa’ with the ‘Get Data’ tool, this is a file of sequences from Hyaloperonospora arabidopsidis (Hpa).</li>
+<li>Select the ‘NCBI BLAST+ blastp’ tool in the ‘NCBI BLAST+’ category</li>
+<li>Use ‘unclassified.fa’ as the Query sequences</li>
+<li>Select ‘FASTA file’ for ‘Subject database/sequences:’</li>
+<li>Select ‘hpa_effectors.fa’ for ‘Protein FASTA file to use as database:’</li>
+<li>Set ‘Set expectation value cutoff:’ to 1 (A deliberately high value to make sure we catch very distant similarity).</li>
+<li>Leave ‘Type of BLAST’ as ‘blastp’ and click ‘Execute’.</li>
+</ul>
+</div>
+</section>
+<p>When the job has run you will have a table of BLAST results of unclassified proteins against Hpa, the table columns contain information as follows:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="15%" />
+<col width="75%" />
+</colgroup>
+<tbody valign="top">
+<tr>
+<td>
+Column
+</td>
+<td>
+NCBI name
+</td>
+<td>
+Description
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+qseqid
+</td>
+<td>
+Query Seq-id (ID of your sequence)
+</td>
+</tr>
+<tr>
+<td>
+2
+</td>
+<td>
+sseqid
+</td>
+<td>
+Subject Seq-id (ID of the database hit)
+</td>
+</tr>
+<tr>
+<td>
+3
+</td>
+<td>
+pident
+</td>
+<td>
+Percentage of identical matches
+</td>
+</tr>
+<tr>
+<td>
+4
+</td>
+<td>
+length
+</td>
+<td>
+Alignment length
+</td>
+</tr>
+<tr>
+<td>
+5
+</td>
+<td>
+mismatch
+</td>
+<td>
+Number of mismatches
+</td>
+</tr>
+<tr>
+<td>
+6
+</td>
+<td>
+gapopen
+</td>
+<td>
+Number of gap openings
+</td>
+</tr>
+<tr>
+<td>
+7
+</td>
+<td>
+qstart
+</td>
+<td>
+Start of alignment in query
+</td>
+</tr>
+<tr>
+<td>
+8
+</td>
+<td>
+qend
+</td>
+<td>
+End of alignment in query
+</td>
+</tr>
+<tr>
+<td>
+9
+</td>
+<td>
+sstart
+</td>
+<td>
+Start of alignment in subject (database hit)
+</td>
+</tr>
+<tr>
+<td>
+10
+</td>
+<td>
+send
+</td>
+<td>
+End of alignment in subject (database hit)
+</td>
+</tr>
+<tr>
+<td>
+11
+</td>
+<td>
+evalue
+</td>
+<td>
+Expectation value (E-value)
+</td>
+</tr>
+<tr>
+<td>
+12
+</td>
+<td>
+bitscore
+</td>
+<td>
+Bit score
+</td>
+</tr>
+</tbody>
+</table>
+<p>We will now examine the internal similarity of Hpa effectors and use this to come up with a threshold for our classifier.</p>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="section"><span class="glyphicon glyphicon-pencil"></span></h2>
+</div>
+<div class="panel-body">
+<p>Re-run the BLASTP with <code>Hpa</code> against itself</p>
+</div>
+</section>
+<p>The important values will be such things as <code>E-value</code>, <code>hit length</code>, <code>percent identical</code>. Examine each protein’s hits and (excluding self hits) see what you think is a reasonable set of figures for similarity. The figures decided upon will vary quite widely for every dataset you ever try. Compare the figures that you get here with the ones you got for the comparison of unclassified proteins against hpa. You’ll see that this sort of analysis can be very plastic, different values are needed every time, dependent on what the current control set is. Does BLAST similarity alone seem like a good way to classify proteins?</p>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="section-1"><span class="glyphicon glyphicon-pencil"></span></h2>
+</div>
+<div class="panel-body">
+<p>With the results of the previous BLAST file, use Galaxy’s <code>Text Manipulation</code> and <code>Filter</code> tools to remove low similarity matches.</p>
+</div>
+</section>
+<p>With BLAST approaches we can compare candidates from a pathogenic species with proteins from a related non-pathogenic species using the principle that any proteins in the pathogenic species without matches in the non-pathogenic relative are likely to be related to pathogenesis.</p>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="section-2"><span class="glyphicon glyphicon-pencil"></span></h2>
+</div>
+<div class="panel-body">
+<p>Lets see whether we can use a negative control set to classify potential pathogenesis related proteins. We have two new files, this time from bacteria, one a pathogen of tomato (<em>Pseudomonas syringae pv tomato DC3000</em>) and a non-pathogenic relative (<em>Pseudomonas putida F1</em>).</p>
+<ul>
+<li>Set up the BLASTP using the files <code>p_syringae_dc3000.fa</code> and <code>p_putida_f1.fa</code>, as you did above. Remember to use P.putida as the database!</li>
+<li>Use the <code>Text Manipulation</code> tool-set in Galaxy to find any genes in <em>P.syringae DC3000</em> that don’t have matches in <em>P.putida</em>.</li>
+</ul>
+</div>
+</section>
+        </div>
+      </div>
+      </article>
+      <div class="footer">
+        <!-- <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a> -->
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <!-- <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a> -->
+        <a class="label swc-blue-bg" href="mailto:dan.maclean@tsl.ac.uk">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>
