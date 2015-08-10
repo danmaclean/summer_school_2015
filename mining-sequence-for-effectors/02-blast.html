@@ -46,24 +46,32 @@
 </section>
 <p>BLAST is the canonical sequence comparison tool and a very heavily used tool. Sometimes it is used too much and without proper attention to the weakness of the method. BLAST functions by creating an indexed database of segments of all the sequences provided to it, called ‘words’. The ‘words’ of the query sequence are then compared to the index and ‘hits’ found. These small hits are extended to find all the regions of identity. The regions of matches are called High Scoring Pairs (HSPs).</p>
 <p>In this part of the practical we will use BlastP (the protein sequence optimised variant of BLAST) to circumspectly examine sequence similarity between the known proteins and the candidates to identify potential matches. The basic principle is to compare all the known Avr proteins to each other using BLAST and examine some of the statistics, including the E-Score and the percent identity, to find a figure for the groups internal similarity. We can then use this threshold to classify our unknown proteins.</p>
-<p>Let’s use the version in Galaxy to</p>
+<p>Let’s use the version of BLAST in Galaxy!</p>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h2 id="hpa"><span class="glyphicon glyphicon-pushpin"></span>Hpa</h2>
+</div>
+<div class="panel-body">
+<p>Hpa is the easy to type short name we will use for the oomycete pathogen that causes downy mildew on <em>Arabidopsis</em> <em>Hyaloperonospora arabidopsidis</em> <a href="https://en.wikipedia.org/wiki/Hyaloperonospora_arabidopsidis">See the Wikipedia article for more info</a></p>
+</div>
+</aside>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="use-blast-to"><span class="glyphicon glyphicon-pencil"></span>Use BLAST to</h2>
+<h2 id="use-blast-to-compare-sequences-and-get-metrics-of-similarity"><span class="glyphicon glyphicon-pencil"></span>Use BLAST to compare sequences and get metrics of similarity</h2>
 </div>
 <div class="panel-body">
 <ul>
-<li>Load in the file ‘hpa_effectors.fa’ with the ‘Get Data’ tool, this is a file of sequences from Hyaloperonospora arabidopsidis (Hpa).</li>
-<li>Select the ‘NCBI BLAST+ blastp’ tool in the ‘NCBI BLAST+’ category</li>
-<li>Use ‘unclassified.fa’ as the Query sequences</li>
-<li>Select ‘FASTA file’ for ‘Subject database/sequences:’</li>
-<li>Select ‘hpa_effectors.fa’ for ‘Protein FASTA file to use as database:’</li>
-<li>Set ‘Set expectation value cutoff:’ to 1 (A deliberately high value to make sure we catch very distant similarity).</li>
-<li>Leave ‘Type of BLAST’ as ‘blastp’ and click ‘Execute’.</li>
+<li>Load in the file <code>hpa_effectors.fa</code> with the <code>Get Data</code> tool, this is a file of sequences from <em>Hyaloperonospora arabidopsidis</em> (Hpa).</li>
+<li>Select the <code>NCBI BLAST+ blastp</code> tool in the <code>NCBI BLAST+</code> category</li>
+<li>Use <code>unclassified.fa</code> as the Query sequences</li>
+<li>Select <code>FASTA file</code> for <code>Subject database/sequences:</code></li>
+<li>Select <code>hpa_effectors.fa</code> for <code>Protein FASTA file to use as database:</code></li>
+<li>Set <code>Set expectation value cutoff:</code> to 1 (A deliberately high value to make sure we catch very distant similarity).</li>
+<li>Leave <code>Type of BLAST</code> as <code>blastp</code> and click <code>Execute</code>.</li>
 </ul>
 </div>
 </section>
-<p>When the job has run you will have a table of BLAST results of unclassified proteins against Hpa, the table columns contain information as follows:</p>
+<p>When the job has run you will have a table of BLAST results of unclassified proteins against <code>Hpa</code>, the table columns contain information as follows:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="10%" />

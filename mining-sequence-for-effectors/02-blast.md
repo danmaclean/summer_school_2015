@@ -13,18 +13,23 @@ BLAST is the canonical sequence comparison tool and a very heavily used tool. So
 
 In this part of the practical we will use BlastP (the protein sequence optimised variant of BLAST) to circumspectly examine sequence similarity between the known proteins and the candidates to identify potential matches. The basic principle is to compare all the known Avr proteins to each other using BLAST and examine some of the statistics, including the E-Score and the percent identity, to find a figure for the groups internal similarity. We can then use this threshold to classify our unknown proteins.
 
-Let's use the version in Galaxy to
+Let's use the version of BLAST in Galaxy!
 
-> ## Use BLAST to {.challenge}
-> + Load in the file 'hpa_effectors.fa' with the 'Get Data' tool, this is a file of sequences from Hyaloperonospora arabidopsidis (Hpa).
-> + Select the 'NCBI BLAST+ blastp' tool in the 'NCBI BLAST+' category
-> + Use 'unclassified.fa' as the Query sequences
-> + Select 'FASTA file' for 'Subject database/sequences:'
-> + Select 'hpa_effectors.fa' for 'Protein FASTA file to use as database:'
-> + Set 'Set expectation value cutoff:' to 1 (A deliberately high value to make sure we catch very distant similarity).
-> + Leave 'Type of BLAST' as 'blastp' and click 'Execute'.
 
-When the job has run you will have a table of BLAST results of unclassified proteins against Hpa, the table columns contain information as follows:
+>## Hpa {.callout}
+> Hpa is the easy to type short name we will use for the oomycete pathogen that causes downy mildew on _Arabidopsis_ _Hyaloperonospora arabidopsidis_ [See the Wikipedia article for more info](https://en.wikipedia.org/wiki/Hyaloperonospora_arabidopsidis)
+>
+
+> ## Use BLAST to compare sequences and get metrics of similarity {.challenge}
+> + Load in the file `hpa_effectors.fa` with the `Get Data` tool, this is a file of sequences from _Hyaloperonospora arabidopsidis_ (Hpa).
+> + Select the `NCBI BLAST+ blastp` tool in the `NCBI BLAST+` category
+> + Use `unclassified.fa` as the Query sequences
+> + Select `FASTA file` for `Subject database/sequences:`
+> + Select `hpa_effectors.fa` for `Protein FASTA file to use as database:`
+> + Set `Set expectation value cutoff:` to 1 (A deliberately high value to make sure we catch very distant similarity).
+> + Leave `Type of BLAST` as `blastp` and click `Execute`.
+
+When the job has run you will have a table of BLAST results of unclassified proteins against `Hpa`, the table columns contain information as follows:
 
 <table border="1" class="docutils">
 <colgroup>
