@@ -60,7 +60,7 @@ As you will see from the output SignalP makes a definitive prediction about whet
 >
 > For non-secretory proteins all the scores represented in the SignalP output should ideally be very low.
 
-![SignalP output - note how the scores change at the cleavage site - the bit with the peaks. ](img/signalp.png)
+![SignalP output - note how the scores change at the cleavage site - at position 30. ](img/signalp.png)
 
 > ## Getting a good result from SignalP {.challenge}
 > + Run SignalP on the `avr_proteins.fa` file
