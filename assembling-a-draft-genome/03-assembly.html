@@ -39,53 +39,83 @@
 </div>
 <div class="panel-body">
 <ul>
-<li>Using Velvet’s two step assembly process</li>
+<li>Using Velvet`s two step assembly process</li>
 <li>Evaluating assembly quality</li>
 <li>Changing parameters and estimating effect</li>
 </ul>
 </div>
 </section>
-<p>Now that our reads are QC’d we can start to do an assembly. The reads we have prepared are selected from the Phytophthora infestans T30-4 genome. They cover a very small 170kb region on Super Contig 43 from 740-910Kb. This region contains some nice ‘core orthologues’ and the odd effector. The reads are sufficient to cover the region to 30x, which is an average amount of coverage for a first assembly with short reads.</p>
-<p>Sequence assembly de novo seeks simply to form longer sequences from short ones, accurately and efficiently without the assistance of any reference sequence. The long sequences that are produced, contigs, should span an entire chromosome but this is not often achievable because most eukaryotic and prokaryotic genomes contain regions that cannot be sequenced or assembled, leaving most genomes assembled into a few (or many) large fragments. De-novo assembly is not a problem that has emerged with the next-generation sequencing, there are numerous well-established algorithms and tools for assembly of capillary sequence reads. These methods do not work with next-generation reads for several reasons: the distributions of sequencing errors are different making the prior error models inappropriate, they rely on overlaps between sequence reads that do not exist in short sequence reads and are unable to deal with the number of sequence reads.</p>
-<p>Next Generation Sequence reads are typically assembled using de Bruijn graph assemblers, such as Velvet (Zerbino et al., 2008), ABYSS (Simpson et al., 2009), Euler (Chaisson et al., 2008) , SOAPdenovo (Li et al., 2010) and ALLPATHS (Butler et al., 2008). In the majority of these assemblers the de Bruijn graph is an internal data structure that represents a network in which the linked entities are (usually) the k-mers and links are made between k-mers that overlap by k-1 with a single nucleotide overhang. In perfect data, (i.e. a situation with no read errors and with k long enough to include the longest repeat in a single k-mer) then it is theoretically possible to reconstruct the genome by following from k-mer to k-mer along the edges, passing through each k-mer once. Since next-generation sequencing data do contain errors and genomic repeats can be very long (many times longer than read length, let alone the length of k used) then the read errors can cause dead ends in the path that terminate extension of the contig, repeats in the genome can cause cycles in the graph. The different ways in which the assembly programs get around these problems is what separates them.</p>
-<p>Velvet is one of the more popular and reliable de novo assemblers for short-read sequence. Velvet works by first breaking reads down into the constituent k-mers and forming the de Bruijn graph. The first part of using Velvet is to run <code>velveth</code> on the reads, this step makes the data structure.</p>
+<p>Now that our reads are QC’d we can start to do an assembly. The reads we have prepared are selected from the <em>Phytophthora infestans T30-4 genome</em>. They cover a very small 170kb region on SuperContig 43 from 740-910Kb. This region contains some nice <code>core orthologues</code> and the odd effector. The reads are sufficient to cover the region to 30x, which is an average amount of coverage for a first assembly with short reads.</p>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h2 id="x-coverage"><span class="glyphicon glyphicon-pushpin"></span>x Coverage</h2>
+</div>
+<div class="panel-body">
+<p>When we talk about coverage of the genome we<code>re really talking about the average number of times we expect each base of the genome to have been sequenced. Sequencing is</code>shotgun` that is to say we smash up the genome and sample bits of it at random - so if we have a 1 Mb genome and we collect 30 Mb of sequence data at random, each bit should appear 30 times.</p>
+</div>
+</aside>
+<p>Sequence assembly <em>de novo</em> seeks simply to form longer sequences from short ones, accurately and efficiently without the assistance of any reference sequence. The long sequences that are produced are called contigs and should span an entire chromosome but this is not often achievable because most eukaryotic and prokaryotic genomes contain regions that cannot be sequenced or assembled, leaving most genomes assembled into a few (or many) large fragments - this is a draft genome.</p>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h2 id="assembler-history"><span class="glyphicon glyphicon-pushpin"></span>Assembler history</h2>
+</div>
+<div class="panel-body">
+<p><em>de novo</em> assembly is not a problem that has emerged with the next-generation sequencing, there are numerous well-established algorithms and tools for assembly of capillary sequence reads. These methods do not work with next-generation reads for several reasons: the distributions of sequencing errors are different making the prior error models inappropriate, they rely on overlaps between sequence reads that do not exist in short sequence reads and are unable to deal with the number of sequence reads.</p>
+</div>
+</aside>
+<p>Next Generation Sequence reads are typically assembled using de Bruijn graph assemblers, such as Velvet (Zerbino et al., 2008), ABYSS (Simpson et al., 2009), Euler (Chaisson et al., 2008), SOAPdenovo (Li et al., 2010) and ALLPATHS (Butler et al., 2008).</p>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h2 id="how-assemblers-work"><span class="glyphicon glyphicon-pushpin"></span>How Assemblers work</h2>
+</div>
+<div class="panel-body">
+<p>In the majority of these assemblers the de Bruijn graph is an internal data structure that represents a network in which the linked entities are (usually) k-mers (short fragments of the reads) and links are made between k-mers that overlap by k-1 with a single nucleotide overhang. In perfect data, (i.e. a situation with no read errors and with k long enough to include the longest repeat in a single k-mer) then it is theoretically possible to reconstruct the genome by following from k-mer to k-mer along the edges, passing through each k-mer once. Since next-generation sequencing data do contain errors and genomic repeats can be very long (many times longer than read length, let alone the length of k used) then the read errors can cause dead ends in the path that terminate extension of the contig, repeats in the genome can cause cycles in the graph. The different ways in which the assembly programs get around these problems is what separates them.</p>
+</div>
+</aside>
+<p>Velvet is one of the more popular and reliable <em>de novo</em> assemblers for short-read sequence. Velvet works by first breaking reads down into the constituent k-mers and forming the de Bruijn graph. The first part of using Velvet is to run <code>velveth</code> on the reads, this step makes the data structure which is used later.</p>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h2 id="interlacing"><span class="glyphicon glyphicon-pushpin"></span>Interlacing</h2>
+</div>
+<div class="panel-body">
+<p>Velvet requires it’s input files to be interlaced, that is the left and right reads should be in the same file one after the other, in the <code>velveth</code> tool Galaxy will do this for you behind the scenes. We will do it manually so we don’t need to do it for a later step.</p>
+</div>
+</aside>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="interlacing-1"><span class="glyphicon glyphicon-pencil"></span>Interlacing</h2>
+</div>
+<div class="panel-body">
+<p>Under <code>NGS: QC and manipulation</code> select <code>FASTQ interlacer on paired end reads</code>. Select the left and right files to interlace. You may need to set the attributes!</p>
+</div>
+</section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2 id="challenge"><span class="glyphicon glyphicon-pencil"></span>Challenge</h2>
 </div>
 <div class="panel-body">
+<p>Note the interface can be picky about the exact datatype so you <em>may</em> need to change the read format in the attributes box - again. Also the interface sometimes just refuses to show the items. Try forcing it to look again by resetting the format between <code>fasta</code> and <code>fastq</code> in the <code>velveth</code> window. Apologies for this - it is just a weird bug…</p>
 <ul>
-<li>In the tool list under ‘NGS:Assembly’, select <code>velveth</code></li>
+<li>In the tool list under <code>NGS:Assembly</code>, select <code>velveth</code></li>
 <li>Set the parameters as follows:</li>
 <li>Hash Length = 27</li>
-<li>Click ‘Add new input files’ to load a read file, you’ll need two for each assembly, as these are paired</li>
-<li>‘fastq’ format</li>
-<li>Read type = ‘shortPaired reads’ for the first file and ‘shortPaired2 reads’ for the second file</li>
-<li>Select the trimmed reads from the 500 bp insert library. Left reads go in first, right reads go in second.<br /></li>
+<li>Click <code>insert files</code> to load a read file, you<code>ll need the interlaced file for the assembly, as these are</code>paired`</li>
+<li><code>FASTQ</code> format</li>
+<li><code>Set Short Library Type reads</code> for the first set (interlaced 500) and don’t use the insert 2000 sets for this step.</li>
 <li>Click Execute, <code>velveth</code> will build the data structure. You can examine the output when it is done, but remember nothing is assembled yet.</li>
 </ul>
 </div>
 </section>
-<p>The second step is to let the assembly algorithm <code>velvetg</code> work through the produced hash and create contigs.</p>
+<p>The second step is to let the assembly algorithm <code>velvetg</code> work through the produced data structure and create contigs.</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2 id="challenge-1"><span class="glyphicon glyphicon-pencil"></span>Challenge</h2>
 </div>
 <div class="panel-body">
 <ul>
-<li>In the tool list under ‘NGS:Assembly’, select <code>velvetg</code></li>
-<li>Set the parameters as follows:</li>
-<li>Velvet Dataset = the velveth data you just created</li>
-<li>Generate AMOS = No</li>
-<li>Generate Unused Reads = Yes</li>
-<li>Generate LastGraph = No</li>
-<li>Coverage Cutoff = Automatic</li>
-<li>Expected Coverage of Unique Region = Automatic</li>
-<li>Minimum Length = No</li>
-<li>Paired Reads = Yes</li>
-<li>Expected Distance = 350</li>
-<li>Velvet advanced = Defaults</li>
-<li>Hit execute, the assembly will be placed in an item called ‘Contigs’. You will also get ‘Unused Reads’ and ‘Stats’. Examine all these files.</li>
+<li>In the tool list under <code>NGS:Assembly</code>, select <code>velvetg</code></li>
+<li>Examine all the parameters and convince yourself you are happy with how they are set.</li>
+<li>Hit execute, the assembly will be placed in an item called <code>Contigs</code>. You will also get <code>Unused Reads</code> and <code>Stats</code>. Examine all these files.</li>
 </ul>
 </div>
 </section>
@@ -96,57 +126,22 @@
 </div>
 <div class="panel-body">
 <ul>
-<li>Select the ‘assemblystats’ tool in ‘NGS: Assembly’ section.</li>
-<li>Choose ‘contig’ for ‘Type of Read’ and your Velvet contigs for the ‘Source file in FASTA format’.</li>
+<li>Select the <code>assemblystats</code> tool in <code>NGS: Assembly</code> section.</li>
+<li>Choose <code>contig</code> for <code>Type of Read</code> and your Velvet contigs for the <code>Source file in FASTA format</code>.</li>
 <li>Click execute, when its done you should get a file of statistics and a histogram. Examine these and see what you think about the assembly you have produced. Is it any good?</li>
+<li>What do you think about the quality of the assembly you produced? How big were the reads to start with? How big are the contigs you made? Is the assembly any good?</li>
 </ul>
 </div>
 </section>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h2 id="finding-the-best-assembly"><span class="glyphicon glyphicon-pushpin"></span>Finding the best assembly</h2>
+</div>
+<div class="panel-body">
 <p>An additional complication is that the performance of each of the assemblers is sensitive to input parameter values, it is not usually possible to determine a priori the best parameter values (indeed, the ‘best’ parameter values may depend entirely on the final downstream application). To get round this we carry out assemblies at a wide-range of parameter values (usually we check a wide range of k values) and compare the resulting contig sets with a view to processing the set of sequences downstream. This can take the form of clustering and removing identical redundant sequences to make a maximal set or using a set of control sequences such as commonly occurring orthologue sets, to aid assessment of the reconstruction of these core genes as an indicator of assembly success.</p>
-<p>Velvet Optimiser is a useful tool that carries out many runs of Velvet at different values of k, assesses them using a particular user-specified measure and keeps only the best one according to that measure. Run it on your trimmed read data.</p>
-<section class="challenge panel panel-success">
-<div class="panel-heading">
-<h2 id="challenge-3"><span class="glyphicon glyphicon-pencil"></span>Challenge</h2>
 </div>
-<div class="panel-body">
-<ul>
-<li>Select the ‘Velvet Optimiser’ tool in ‘NGS: Assembly’ section.</li>
-<li>Set the parameters as follows:</li>
-<li>Start Hash Length = 41</li>
-<li>End Hash Length = 51</li>
-<li>Number of threads = 1</li>
-<li>Kmer optimisations metric = N50</li>
-<li>Coverage optimisation metric = Total number of bp in contigs &gt; 1kb</li>
-<li>Leave ‘Advanced options’ empty</li>
-<li>Click ‘Add new input files’ to load a read file, you’ll need two for each assembly, as these are paired</li>
-<li>‘fastq’ format</li>
-<li>Read type = ‘shortPaired reads’ for the first file and ‘shortPaired3 reads’ for the second file</li>
-<li>Select the trimmed reads from the 500 bp insert library. Left reads go in first, right reads go in second.</li>
-<li>CLick Execute. When the job is done, you should have the ‘best’ assembly and the output stats.</li>
-<li>Examine the Stats Output file</li>
-<li>Run the <code>assembly stats</code> tool on the Contigs from this assembly, as before.</li>
-<li>Compare the results of this best assembly, with the previous assembly. Is it any better?</li>
-<li>Now repeat the <code>Velvet Optimiser</code> run with the trimmed reads from the 2000 bp insert library. Examine that and compare it to the assembly from the 500 bp library.</li>
-</ul>
-</div>
-</section>
-<p>Once we have our contigs from our two separate insert size libraries, we can merge them to remove redundancy and find points of overlap and combine overlapping contigs into a super-assembly. The Minimus 2 scaffolder, part of the AMOS package, takes longer sequences and compares them to each other, merges sequence with overlaps and outputs the super-contigs. The Galaxy implementation of this program is very simple and has very few options. The command-line has many more options.</p>
-<section class="challenge panel panel-success">
-<div class="panel-heading">
-<h2 id="challenge-4"><span class="glyphicon glyphicon-pencil"></span>Challenge</h2>
-</div>
-<div class="panel-body">
-<ul>
-<li>Select the ‘Minimus 2’ tool in ‘NGS: Assembly’ section.</li>
-<li>Select the Contigs from the Velvet Optimiser of the 500 bp library as ‘Contig Sequences 1’</li>
-<li>Select the Contigs from the Velvet Optimiser of the 2000 bp library as ‘Contig Sequences 2’</li>
-<li>Select ‘yes, add prefix’ for both files</li>
-<li>Hit Execute.</li>
-</ul>
-</div>
-</section>
-<p>When the program finishes, then you’ll get two files. One is of combined contigs, one of contigs that weren’t merged. Both files constitute the assembly. Run the <code>assemblystats</code> tool on the Contigs file. Has this step improved our assembly at all?</p>
-<p>Congratulations! You’ve put together a rough draft genome assembly.</p>
+</aside>
+<p>Congratulations! You`ve put together a rough draft genome assembly.</p>
         </div>
       </div>
       </article>
