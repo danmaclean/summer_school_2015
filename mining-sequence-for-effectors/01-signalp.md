@@ -17,14 +17,13 @@ Classification is the process of taking an object and deciding whether it falls 
 
 Appropriate controls are vitally important. In this tutorial you`ll notice that the `right` control is probably a matter of opinion and that the interpretation and results of our analysis can vary hugely dependent on what we are using. As far as possible it is necessary to get a control or control set that has been shown experimentally to be of the class that we are interested in.
 
-Protein secretion is a primary mechanism in the pathogenesis of many prokaryotic and eukaryotic microorganisms. The effector proteins are secreted from the cytosol of the pathogen into the host whereby they cause disease. The molecular signal that marks a protein for export is called the signal peptide and is typically found at the N-terminal of the protein. Thus candidates can be screened by identifying a signal peptide. Signal peptide programs are numerous, SignalP has the best reputation and performed best in a benchmarking study (see reference on SignalP 4 paper).  
+Protein secretion is a primary mechanism in the pathogenesis of many prokaryotic and eukaryotic microorganisms. The effector proteins are secreted from the cytosol of the pathogen into the host whereby they cause disease. The molecular signal that marks a protein for export is called the signal peptide and is typically found at the N-terminal of the protein. Thus candidates can be screened by identifying a signal peptide. Signal peptide programs are numerous, SignalP is one of that is frequently used.
 
 > ## Hidden Markov Models {.callout}
 > Hidden Markov Models (HMMs) are complex statistical tools that work by calculating the probability of moving from one state to another based on a background model, that is to say from moving from an `L` amino acid to a `D` given the relative proportions of `L`s and `D`s in that point in the set of sequences from which the model was derived. The canonical tool for using and defining HMMs is HMMER. The process of defining a HMM requires a careful alignment of a number of positively identified proteins. HMMs tend to be used for defining short protein domains or motifs. Many methods dealing with sequence use HMMs in one way or another.
 >
 
 From the author`s description
-
 ~~~
 SignalP is a program that we can use to find potential peptide signals. SignalP server predicts the presence and location of signal peptide cleavage sites in amino acid sequences from different organisms: Gram-positive prokaryotes, Gram-negative prokaryotes, and eukaryotes. The method incorporates a prediction of cleavage sites and a signal peptide/non-signal peptide prediction based on a combination of several artificial neural networks and hidden Markov models.
 ~~~
@@ -32,7 +31,7 @@ SignalP is a program that we can use to find potential peptide signals. SignalP 
 It is therefore a complex heuristic and its internal models of what constitute a signal peptide may in fact be very different from those that you are interested in, which means that we must examine the output very carefully.
 
 > ## Run SignalP 3.0 {.challenge}
-> + Start a new history and from the  Training data library, load in the data in Effector Classification
+> + Start a new history and from the  `Summer School` data library, load in the data in `Effector Classification`
 > + Find the SignalP 3.0 tool under `Protein Analysis`
 > + Select your `unclassified.fa` file as the sequences in `Fasta file of protein sequences`
 > + Select Eukaryote
@@ -61,7 +60,7 @@ As you will see from the output SignalP makes a definitive prediction about whet
 >
 > For non-secretory proteins all the scores represented in the SignalP output should ideally be very low.
 
-![SignalP output](img/signalp.png)
+![SignalP output - note how the scores change at the cleavage site - the bit with the peaks. ](img/signalp.png)
 
 > ## Getting a good result from SignalP {.challenge}
 > + Run SignalP on the `avr_proteins.fa` file
@@ -70,9 +69,10 @@ As you will see from the output SignalP makes a definitive prediction about whet
 > + Can you come up with a convincing threshold that allows you to discriminate the candidate secreted peptides better than the raw SignalP output? Sketch out your ideas for the comparison.
 
 > ## Manipulating text and tables in Galaxy {.callout}
-> Galaxy is designed to work with text and tabular data, a lot of its tools perform useful actions on these types of files. In particular the tools in the categories below
-> 1. Text Manipulation
-> 2. Filter and Sort
-> 3. Join, Subtract and Group
+> Galaxy is designed to work with text and tabular data, a lot of its tools perform useful actions on these types of files. In particular the tools in the categories below:
+>
+> + Text Manipulation
+> + Filter and Sort
+> + Join, Subtract and Group
 >
 > are all very useful for making subsets of results and combining them with others. We won`t go through them in too much > detail in this document, they are pretty self-explanatory, but will refer to them a little later when you go on to examine > the data on your own.

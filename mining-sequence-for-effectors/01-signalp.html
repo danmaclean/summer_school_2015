@@ -47,7 +47,7 @@
 </section>
 <p>Classification is the process of taking an object and deciding whether it falls into a particular group. In this case we will be deciding whether a protein is an effector or not. Classification at its simplest requires some sort of baseline against which to compare our candidate and make a decision so the first step of classification is to create the classifier. Often these classifiers will be data structures embodied in computer programs. The sophistication of these programs varies and their contribution to the accuracy of classification varies too. Most importantly when the program contains its own model we must be aware of how that model can vary from what it is we are looking for. Therefore we need to always apply the best scientific principles of control and criticism when carrying out these analyses, these tools will all give spurious results if we try to use them as a <code>black-box</code>.</p>
 <p>Appropriate controls are vitally important. In this tutorial you<code>ll notice that the</code>right` control is probably a matter of opinion and that the interpretation and results of our analysis can vary hugely dependent on what we are using. As far as possible it is necessary to get a control or control set that has been shown experimentally to be of the class that we are interested in.</p>
-<p>Protein secretion is a primary mechanism in the pathogenesis of many prokaryotic and eukaryotic microorganisms. The effector proteins are secreted from the cytosol of the pathogen into the host whereby they cause disease. The molecular signal that marks a protein for export is called the signal peptide and is typically found at the N-terminal of the protein. Thus candidates can be screened by identifying a signal peptide. Signal peptide programs are numerous, SignalP has the best reputation and performed best in a benchmarking study (see reference on SignalP 4 paper).</p>
+<p>Protein secretion is a primary mechanism in the pathogenesis of many prokaryotic and eukaryotic microorganisms. The effector proteins are secreted from the cytosol of the pathogen into the host whereby they cause disease. The molecular signal that marks a protein for export is called the signal peptide and is typically found at the N-terminal of the protein. Thus candidates can be screened by identifying a signal peptide. Signal peptide programs are numerous, SignalP is one of that is frequently used.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2 id="hidden-markov-models"><span class="glyphicon glyphicon-pushpin"></span>Hidden Markov Models</h2>
@@ -56,8 +56,7 @@
 <p>Hidden Markov Models (HMMs) are complex statistical tools that work by calculating the probability of moving from one state to another based on a background model, that is to say from moving from an <code>L</code> amino acid to a <code>D</code> given the relative proportions of <code>L</code>s and <code>D</code>s in that point in the set of sequences from which the model was derived. The canonical tool for using and defining HMMs is HMMER. The process of defining a HMM requires a careful alignment of a number of positively identified proteins. HMMs tend to be used for defining short protein domains or motifs. Many methods dealing with sequence use HMMs in one way or another.</p>
 </div>
 </aside>
-<p>From the author`s description</p>
-<pre><code>SignalP is a program that we can use to find potential peptide signals. SignalP server predicts the presence and location of signal peptide cleavage sites in amino acid sequences from different organisms: Gram-positive prokaryotes, Gram-negative prokaryotes, and eukaryotes. The method incorporates a prediction of cleavage sites and a signal peptide/non-signal peptide prediction based on a combination of several artificial neural networks and hidden Markov models.</code></pre>
+<p>From the author`s description <sub>~</sub> SignalP is a program that we can use to find potential peptide signals. SignalP server predicts the presence and location of signal peptide cleavage sites in amino acid sequences from different organisms: Gram-positive prokaryotes, Gram-negative prokaryotes, and eukaryotes. The method incorporates a prediction of cleavage sites and a signal peptide/non-signal peptide prediction based on a combination of several artificial neural networks and hidden Markov models. <sub>~</sub></p>
 <p>It is therefore a complex heuristic and its internal models of what constitute a signal peptide may in fact be very different from those that you are interested in, which means that we must examine the output very carefully.</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
@@ -65,7 +64,7 @@
 </div>
 <div class="panel-body">
 <ul>
-<li>Start a new history and from the Training data library, load in the data in Effector Classification</li>
+<li>Start a new history and from the <code>Summer School</code> data library, load in the data in <code>Effector Classification</code></li>
 <li>Find the SignalP 3.0 tool under <code>Protein Analysis</code></li>
 <li>Select your <code>unclassified.fa</code> file as the sequences in <code>Fasta file of protein sequences</code></li>
 <li>Select Eukaryote</li>
@@ -93,8 +92,8 @@
 </div>
 </aside>
 <div class="figure">
-<img src="img/signalp.png" alt="SignalP output" />
-<p class="caption">SignalP output</p>
+<img src="img/signalp.png" alt="SignalP output - note how the scores change at the cleavage site - the bit with the peaks." />
+<p class="caption">SignalP output - note how the scores change at the cleavage site - the bit with the peaks.</p>
 </div>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
@@ -113,7 +112,12 @@
 <h2 id="manipulating-text-and-tables-in-galaxy"><span class="glyphicon glyphicon-pushpin"></span>Manipulating text and tables in Galaxy</h2>
 </div>
 <div class="panel-body">
-<p>Galaxy is designed to work with text and tabular data, a lot of its tools perform useful actions on these types of files. In particular the tools in the categories below 1. Text Manipulation 2. Filter and Sort 3. Join, Subtract and Group</p>
+<p>Galaxy is designed to work with text and tabular data, a lot of its tools perform useful actions on these types of files. In particular the tools in the categories below:</p>
+<ul>
+<li>Text Manipulation</li>
+<li>Filter and Sort</li>
+<li>Join, Subtract and Group</li>
+</ul>
 <p>are all very useful for making subsets of results and combining them with others. We won`t go through them in too much &gt; detail in this document, they are pretty self-explanatory, but will refer to them a little later when you go on to examine &gt; the data on your own.</p>
 </div>
 </aside>
