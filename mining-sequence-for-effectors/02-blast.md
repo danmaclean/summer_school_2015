@@ -93,16 +93,17 @@ When the job has run you will have a table of BLAST results of unclassified prot
 </tbody>
 </table>
 
-We will now examine the internal similarity of Hpa effectors and use this to come up with a threshold for our classifier.
+We will now examine the internal similarity of Hpa effectors and use this to come up with a threshold for our classifier. The lowest internal similarity of the files tells us the maximum distance for any of the BLAST scores any two 'real' Hpa effectors will have. This sets a bound on the distance we should be looking at.
 
-> ## {.challenge}
-> Re-run the BLASTP with `Hpa` against itself
+> ## Self versus Self Blast{.challenge}
+> Re-run the BLASTP with `Hpa` against itself.
+> Examine the scores.  Which threshold should we choose?
 >
 
 The important values will be such things as `E-value`, `hit length`, `percent identical`. Examine each protein's hits and (excluding self hits) see what you think is a reasonable set of figures for similarity. The figures decided upon will vary quite widely for every dataset you ever try. Compare the figures that you get here with the ones you got for the comparison of unclassified proteins against hpa. You'll see that this sort of analysis can be very plastic, different values are needed every time, dependent on what the current control set is. Does BLAST similarity alone seem like a good way to classify proteins?
 
 > ## {.challenge}
-> With the results of the previous BLAST file, use Galaxy's `Text Manipulation` and `Filter` tools to remove low similarity matches.
+> With the results of the previous BLAST file - the threshold you chose, use Galaxy's `Text Manipulation` and `Filter` tools to remove low similarity matches.
 >
 
 With BLAST approaches we can compare candidates from a pathogenic species with proteins from a related non-pathogenic species using the principle that any proteins in the pathogenic species without matches in the non-pathogenic relative are likely to be related to pathogenesis.

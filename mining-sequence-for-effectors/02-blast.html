@@ -224,28 +224,28 @@ Bit score
 </tr>
 </tbody>
 </table>
-<p>We will now examine the internal similarity of Hpa effectors and use this to come up with a threshold for our classifier.</p>
+<p>We will now examine the internal similarity of Hpa effectors and use this to come up with a threshold for our classifier. The lowest internal similarity of the files tells us the maximum distance for any of the BLAST scores any two ‘real’ Hpa effectors will have. This sets a bound on the distance we should be looking at.</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="section"><span class="glyphicon glyphicon-pencil"></span></h2>
+<h2 id="self-versus-self-blast"><span class="glyphicon glyphicon-pencil"></span>Self versus Self Blast</h2>
 </div>
 <div class="panel-body">
-<p>Re-run the BLASTP with <code>Hpa</code> against itself</p>
+<p>Re-run the BLASTP with <code>Hpa</code> against itself. Examine the scores. Which threshold should we choose?</p>
 </div>
 </section>
 <p>The important values will be such things as <code>E-value</code>, <code>hit length</code>, <code>percent identical</code>. Examine each protein’s hits and (excluding self hits) see what you think is a reasonable set of figures for similarity. The figures decided upon will vary quite widely for every dataset you ever try. Compare the figures that you get here with the ones you got for the comparison of unclassified proteins against hpa. You’ll see that this sort of analysis can be very plastic, different values are needed every time, dependent on what the current control set is. Does BLAST similarity alone seem like a good way to classify proteins?</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="section-1"><span class="glyphicon glyphicon-pencil"></span></h2>
+<h2 id="section"><span class="glyphicon glyphicon-pencil"></span></h2>
 </div>
 <div class="panel-body">
-<p>With the results of the previous BLAST file, use Galaxy’s <code>Text Manipulation</code> and <code>Filter</code> tools to remove low similarity matches.</p>
+<p>With the results of the previous BLAST file - the threshold you chose, use Galaxy’s <code>Text Manipulation</code> and <code>Filter</code> tools to remove low similarity matches.</p>
 </div>
 </section>
 <p>With BLAST approaches we can compare candidates from a pathogenic species with proteins from a related non-pathogenic species using the principle that any proteins in the pathogenic species without matches in the non-pathogenic relative are likely to be related to pathogenesis.</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="section-2"><span class="glyphicon glyphicon-pencil"></span></h2>
+<h2 id="section-1"><span class="glyphicon glyphicon-pencil"></span></h2>
 </div>
 <div class="panel-body">
 <p>Lets see whether we can use a negative control set to classify potential pathogenesis related proteins. We have two new files, this time from bacteria, one a pathogen of tomato (<em>Pseudomonas syringae pv tomato DC3000</em>) and a non-pathogenic relative (<em>Pseudomonas putida F1</em>).</p>

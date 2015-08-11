@@ -19,7 +19,7 @@ Regular expressions are actually a small but powerful computer scientist's way o
 
 > ## {.challenge}
 >First, we need to convert the FASTA to Tabular format to get all the data on a single line per sequence
-> + Select FASTA-to-Tabular in FASTA Manipulation tool and select your avr_proteins.fa file
+> + Select FASTA-to-Tabular in FASTA Manipulation tool and select your `avr_proteins.fa` file
 > + Select 1 as the number of columns to divide title into, click Execute.
 > + When the job is run, use the output in the `Filter and sort` `Select lines that match an expression` tool
 > + Select the `avr_proteins.fa` file as the input, type `R.LR` into the pattern box and select `Execute`
