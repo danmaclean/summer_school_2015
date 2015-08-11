@@ -61,7 +61,7 @@
 <img src="img/analysis_view_colored.png" alt="Different sections of the Galaxy analysis view" />
 <p class="caption">Different sections of the Galaxy analysis view</p>
 </div>
-<p>Tools are the programs and scripts that we have added to Galaxy that can be used for analyses. Galaxy tools are all kept in the left-hand pane of the analysis view, and are organised into tool categories. At the top you should see the Get Data category, for example. Let’s look at using a tool in Galaxy.</p>
+<p>Tools are the programs and scripts that we have added to Galaxy that can be used for analyses. Galaxy tools are all kept in the left-hand pane of the analysis view, and are organised into tool categories. At the top you should see the <code>Get Data</code> category, for example. Let’s look at using a tool in Galaxy.</p>
 <p>Let’s try getting some data into Galaxy from the outside world.</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
@@ -72,7 +72,7 @@
 <li>Click the <code>Get Data</code> heading in the Tool Panel, and the <code>Upload File</code> from your computer tool.</li>
 <li>The tool interface should replace the splash page in the centre panel, and look like this: <img src="img/upload_interface.png" alt="The upload interface" /></li>
 <li>The tool’s options are now visible and can be selected. This tool has just a few, and are all described in the help at the bottom of the screen.</li>
-<li>Select <code>Choose File</code> and from the drop-down box select the file <code>small.gff</code> which should be in the <code>data</code> folder on the Desktop.</li>
+<li>Select <code>Choose File</code> and from the drop-down box select the file <code>small.gff</code> (which you can download at this <a href="data/small.gff">link</a>.</li>
 <li>Select Execute at the bottom of the tool interface to make the tool run. You should see a helpful message when the tool starts to run.</li>
 <li>When the tool is run, and the data are uploaded you should see a green box in the History panel.</li>
 </ul>
@@ -86,8 +86,8 @@
 <li>Grey = this job is queued and is waiting to run. <img src="img/grey.png" alt="An unstarted job" /></li>
 </ul>
 <p>History items can be downloaded from the History panel, using the icons in the top right of each History item. The eye icon allows you to preview the file contents in the Main Panel, the disk icon allows you to download the file. Galaxy History items are never deleted until you explicitly state that they can be, data items, analyses and jobs stay live even after you log-out and shut down the machine.</p>
-<p>Clicking on the name of the history item expands it and presents you with summary information and a preview of the data. We are shown that this file has 9 lines in it, is of format GFF and has database <code>Arabidopsis</code>. We can also see that Galaxy has automatically annotated the columns in the file and numbered them. <img src="img/item_close.png" alt="The item" /></p>
-<p>If Galaxy makes a mistake with any of our history items, such as giving a file the wrong format, we can alter the attributes manually. This is often useful to give the items a useful name. Let’s alter the attributes of our small.gff history item. Click the pencil icon in the top-right corner of the history item. You should see the form in the main panel as below:</p>
+<p>Clicking on the name of the history item expands it and presents you with summary information and a preview of the data. We are shown that this example file has 9 lines in it (is the one you uploaded different?), is of format GFF and has database <code>Arabidopsis</code>. We can also see that Galaxy has automatically annotated the columns in the file and numbered them. <img src="img/item_close.png" alt="The item" /></p>
+<p>If Galaxy makes a mistake with any of our history items, such as giving a file the wrong format, we can alter the attributes manually. This is often useful to give the items a useful name. Let’s alter the attributes of our <code>small.gff</code> history item. Click the pencil icon in the top-right corner of the history item. You should see the form in the main panel as below:</p>
 <div class="figure">
 <img src="img/attributes.png" alt="The attributes of a history item" />
 <p class="caption">The attributes of a history item</p>
@@ -104,13 +104,21 @@
 </div>
 </section>
 <p>Genome sequence can be used within Galaxy, in some Galaxy instances it is installed or ‘built-in’ by the person who maintains Galaxy, but more often you will want to upload one to the history, using the <code>Get Data</code> tool. Other tools that need a reference genome will ask you whether you want to use the history or a ‘built-in’ or ‘build’.</p>
-<p>The file that you uploaded is a GFF file. GFF stands for Generic Feature Format. It is a format that contains on every line, information about a genomic feature such as a gene. It includes information about the Chromosome or Contig a feature is on, the start and end of the feature and the feature’s strand. It doesn’t contain the nucleotide or protein sequence of the feature. A common task is to get the nucleotide sequence for a set of features, given the start and end co-ordinates in a genome. Doing this with Galaxy is very straight forward</p>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h2 id="gff"><span class="glyphicon glyphicon-pushpin"></span>GFF</h2>
+</div>
+<div class="panel-body">
+<p>The file that you uploaded is a GFF file. GFF stands for Generic Feature Format. It is a format that contains on every line, information about a genomic feature such as a gene. It includes information about the Chromosome or Contig a feature is on, the start and end of the feature and the feature’s strand. It doesn’t contain the nucleotide or protein sequence of the feature.</p>
+</div>
+</aside>
+<p>A common task is to get the nucleotide sequence for a set of features, given the start and end co-ordinates in a genome. Doing this with Galaxy is very straight forward</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2 id="challenge-2"><span class="glyphicon glyphicon-pencil"></span>Challenge</h2>
 </div>
 <div class="panel-body">
-<p>Use Galaxy tools to <em>fetch the fasta formatted sequence</em> of the genes represented in the file you uploaded, by <em>extracting genomic DNA</em> You will need to upload the reference genome, use the <code>p_infestans_t30-4.fa</code> file from the folder on the desktop. You will need to make sure that the type of the History item is GFF You will need to work out which tool to use. Have a good look in the Tools Panel and keep in mind the challenge title to find the category and tool you need.</p>
+<p>Use Galaxy tools to <em>fetch the fasta formatted sequence</em> of the genes represented in the file you uploaded, by <em>extracting genomic DNA</em> You will need to upload the reference genome, use the <code>p_infestans_t30-4.fa</code> file from this <a href="data/p_infestans_t30-4.fa">link</a>. You will need to make sure that the type of the History item is GFF You will need to work out which tool to use. Have a good look in the Tools Panel and keep in mind the challenge title to find the category and tool you need.</p>
 </div>
 </section>
         </div>
