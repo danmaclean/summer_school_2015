@@ -1,10 +1,10 @@
-supercont1.1	.	gene	6161783	6163605	.	-	.	ID=7000001843685256;Note=2.2:predicted protein 2.4:conserved hypothetical protein ;Name=PITG_01055
-supercont1.1	.	gene	6164086	6165743	.	+	.	ID=7000001843685266;Note=2.2:conserved hypothetical protein 2.4:myb-like DNA-binding protein, putative ;Name=PITG_01056
-supercont1.1	.	gene	6165867	6172240	.	-	.	ID=7000001843685272;Note=2.2:hypothetical protein 2.4:conserved hypothetical protein ;Name=PITG_01057
-supercont1.1	.	gene	6172503	6173867	.	+	.	ID=7000001843685275;Note=2.2:conserved hypothetical protein 2.4:conserved hypothetical protein ;Name=PITG_01058
-supercont1.1	.	gene	6177521	6177712	.	+	.	ID=7000001843685279;Note=2.2:conserved hypothetical protein 2.4:conserved hypothetical protein ;Name=PITG_01060
-supercont1.1	.	gene	6179205	6180368	.	+	.	ID=7000001843685282;Note=2.2:conserved hypothetical protein 2.4:S-adenosylmethionine decarboxylase proenzyme, putative ;Name=PITG_01062
-supercont1.1	.	gene	6180607	6185194	.	-	.	ID=7000001843685285;Note=2.2:predicted protein 2.4:conserved hypothetical protein ;Name=PITG_01063
-supercont1.1	.	gene	6185494	6186448	.	-	.	ID=7000001843685297;Note=2.2:hypothetical protein 2.4:conserved hypothetical protein ;Name=PITG_01064
-supercont1.1	.	gene	6187478	6189231	.	-	.	ID=7000001843685300;Note=2.2:conserved hypothetical protein 2.4:folylpolyglutamate synthase, putative ;Name=PITG_01065
-supercont1.1	.	gene	6190328	6191284	.	+	.	ID=7000001843685303;Note=2.2:hypothetical protein similar to jumonji domain containing 5 2.4:conserved hypothetical protein ;Name=PITG_01066
+supercont1.1	.	gene	100	600	.	-	.	ID=7000001843685256;Note=2.2:predicted protein 2.4:conserved hypothetical protein ;Name=PITG_01055
+supercont1.1	.	gene	239	567	.	+	.	ID=7000001843685266;Note=2.2:conserved hypothetical protein 2.4:myb-like DNA-binding protein, putative ;Name=PITG_01056
+supercont1.1	.	gene	456	1000	.	-	.	ID=7000001843685272;Note=2.2:hypothetical protein 2.4:conserved hypothetical protein ;Name=PITG_01057
+supercont1.1	.	gene	1200	1300	.	+	.	ID=7000001843685275;Note=2.2:conserved hypothetical protein 2.4:conserved hypothetical protein ;Name=PITG_01058
+supercont1.1	.	gene	1500	1550	.	+	.	ID=7000001843685279;Note=2.2:conserved hypothetical protein 2.4:conserved hypothetical protein ;Name=PITG_01060
+supercont1.1	.	gene	10000	12123	.	+	.	ID=7000001843685282;Note=2.2:conserved hypothetical protein 2.4:S-adenosylmethionine decarboxylase proenzyme, putative ;Name=PITG_01062
+supercont1.1	.	gene	9940	11000	.	-	.	ID=7000001843685285;Note=2.2:predicted protein 2.4:conserved hypothetical protein ;Name=PITG_01063
+supercont1.1	.	gene	1230	2320	.	-	.	ID=7000001843685297;Note=2.2:hypothetical protein 2.4:conserved hypothetical protein ;Name=PITG_01064
+supercont1.1	.	gene	5615	8765	.	-	.	ID=7000001843685300;Note=2.2:conserved hypothetical protein 2.4:folylpolyglutamate synthase, putative ;Name=PITG_01065
+supercont1.1	.	gene	9123	9689	.	+	.	ID=7000001843685303;Note=2.2:hypothetical protein similar to jumonji domain containing 5 2.4:conserved hypothetical protein ;Name=PITG_01066

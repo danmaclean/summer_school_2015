@@ -74,7 +74,7 @@ Genome sequence can be used within Galaxy, in some Galaxy instances it is instal
 
 A common task is to get the nucleotide sequence for a set of features, given the start and end co-ordinates in a genome. Doing this with Galaxy is very straight forward
 
-> ## Challenge {.challenge}
+> ## *fetch the fasta formatted sequence* by *extracting genomic DNA* {.challenge}
 > Use Galaxy tools to *fetch the fasta formatted sequence* of the genes represented in the file you uploaded, by *extracting genomic DNA*
 > You will need to upload the reference genome, use the `p_infestans_t30-4.fa` file from this [link](data/p_infestans_t30-4.fa).
 > You will need to make sure that the type of the History item is GFF
