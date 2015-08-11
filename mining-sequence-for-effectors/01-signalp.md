@@ -75,4 +75,4 @@ As you will see from the output SignalP makes a definitive prediction about whet
 > + Filter and Sort
 > + Join, Subtract and Group
 >
-> are all very useful for making subsets of results and combining them with others. We won`t go through them in too much > detail in this document, they are pretty self-explanatory, but will refer to them a little later when you go on to examine > the data on your own.
+> are all very useful for making subsets of results and combining them with others. We won`t go through them in too much detail in this document, they are pretty self-explanatory, but they are useful if you want to automate the challenge above.
