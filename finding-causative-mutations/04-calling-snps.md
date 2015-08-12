@@ -14,9 +14,9 @@ minutes: 25
 
 Many different programs can be used to call SNPs, including SAMTools, Picard, GATK and VarScan. Some of these programs use the BAM alignment file directly, some use an MPileup file. MPileups and VCF files are both used to represent SNPs and associated scores.  
 
-The MPileup format is a per-line base-by-base representation of the alignment. It provides a much more coherent way of viewing the alignment than the SAM file. 
+The MPileup format is a per-line base-by-base representation of the alignment. It provides a much more coherent way of viewing the alignment than the SAM file.
 
-Here's a sample: 
+Here's a sample:
 
 ~~~ {.output}
 
@@ -31,23 +31,23 @@ seq1 279 C 23  A..T,,.,.,...,,,.,..... ;75&<<<<<<<<<=<<<9<<:<<
 
 ~~~
 
-Each line represents a single nucleotide in the reference. The first three columns represent the reference name, position on the reference and the reference nucleotide. 
+Each line represents a single nucleotide in the reference. The first three columns represent the reference name, position on the reference and the reference nucleotide.
 
-The next three columns are about the bases piled-up over that position, so are total read depth, read bases, and base qualities. 
+The next three columns are about the bases piled-up over that position, so are total read depth, read bases, and base qualities.
 
 At the read base column,
 
  * a dot = a match to the reference base on the forward
  * a comma = match on the reverse strand
- * any of 'ACGTN' = a mismatch on the forward strand 
+ * any of 'ACGTN' = a mismatch on the forward strand
  * any of 'acgtn' = mismatch on the reverse strand
- 
->## Different Flavours of PileUp {.callout}
-> Pileup format has been extended at various times, so the exact format you get can vary a little, the description above is the core of them all and the extensions usually provide some further quality information. Recent versions of SAMtools add quite a few columns to this description. 
-> You can see more here [http://samtools.sourceforge.net/pileup.shtml](http://samtools.sourceforge.net/pileup.shtml)
-> 
 
-`SAMtools` is usually used to generate an MPileup, the `mpileup` command can do this. More recent versions of `SAMtools mpileup` and most other SNP callers can also generate another type of SNP describing file, a VCF [Variant Call Format](reference.html#variant_call_format) file. 
+>## Different Flavours of PileUp {.callout}
+> Pileup format has been extended at various times, so the exact format you get can vary a little, the description above is the core of them all and the extensions usually provide some further quality information. Recent versions of SAMtools add quite a few columns to this description.
+> You can see more here [http://samtools.sourceforge.net/pileup.shtml](http://samtools.sourceforge.net/pileup.shtml)
+>
+
+`SAMtools` is usually used to generate an MPileup, the `mpileup` command can do this. More recent versions of `SAMtools mpileup` and most other SNP callers can also generate another type of SNP describing file, a VCF [Variant Call Format](reference.html#variant_call_format) file.
 
 
 The related VCF file takes a slightly different approach and looks like this:
@@ -65,13 +65,13 @@ The related VCF file takes a slightly different approach and looks like this:
 
 The first thing you notice is that it describes only variant positions **NOT** **EVERY** position like Pileup.
 
-The lines starting with `##` are the meta-data description lines. They define the labels for SNP data and contain key-value pairs separated by an '=' sign (e.g. number=1, Type=Integer, Description="Some description"). 
+The lines starting with `##` are the meta-data description lines. They define the labels for SNP data and contain key-value pairs separated by an '=' sign (e.g. number=1, Type=Integer, Description="Some description").
 
 The header line starts with a single `#`, and has the column headings, these being  ALT and QUAL.  
 
 	1. CHROM = chromosome
-	2. POS = position 
-	3. ID = an ID (if given) 
+	2. POS = position
+	3. ID = an ID (if given)
 	4. REF = reference sequence nucleotide
 	5. ALT = SNP nucleotide
 	6. FILTER = a filter defined in the metadata
@@ -79,7 +79,7 @@ The header line starts with a single `#`, and has the column headings, these bei
 	8. FORMAT = Format of the sample column(s)
 	9. Sample information for one sample formatted according to `FORMAT`
 	10. More sample info (if needed), also according to `FORMAT`
-	etc 
+	etc
 
 `INFO` and `FORMAT` are where the VCF format really makes use of its meta-data. In the INFO column there will be a combination of key=value pairs, separated by
 semi-colons. An entry will read something like:
@@ -87,23 +87,23 @@ semi-colons. An entry will read something like:
 ~~~ {.output}
 	ADP=27;WT=0;HET=2;HOM=0;NC=0
 ~~~  
-Each key (e.g. ADP) will have its meaning explained in the metadata `INFO` fields. 
+Each key (e.g. ADP) will have its meaning explained in the metadata `INFO` fields.
 
-The FORMAT column reads slightly different from the INFO field. 
+The FORMAT column reads slightly different from the INFO field.
 
 ~~~ {.output}
-	GT:GQ:SDP:DP:RD:AD:FREQ:PVAL:RBQ:ABQ:RDF:RDR:ADF:ADR. 
+	GT:GQ:SDP:DP:RD:AD:FREQ:PVAL:RBQ:ABQ:RDF:RDR:ADF:ADR.
 ~~~
 The meaning of these keys can be found in the meta-data in the
 `FORMAT` lines. Some common ones that are useful are:
 
  * `DP` = coverage depth
- * `GT` =  genotype, e.g `0/0`, `1/1` and `0/1` 
+ * `GT` =  genotype, e.g `0/0`, `1/1` and `0/1`
 
-Genotype values have the following meanings: 
-	
-	* 0/0 - Homozygous to the reference (REF) 
-	* 1/1 - Homozygous to the alternate non-reference allele (ALT) 
+Genotype values have the following meanings:
+
+	* 0/0 - Homozygous to the reference (REF)
+	* 1/1 - Homozygous to the alternate non-reference allele (ALT)
 	* 0/1 - Heterozygous (0/2 represents a heterozygote with two alternate alleles)
 
 
@@ -120,40 +120,40 @@ Whichever tool you use, make sure that you get a good idea of what it's options 
 
 Once we've called SNPs, then the next stage is to annotate them. We are looking for heterozygous and homozygous information, which we get from the SNP callers, but a phenotype causing SNP is much more likely to cause a change in the protein that is encoded. Thus we need to know what the effect of the SNP on the protein is. We can find this out with a program called `SNPEff`.
 
-SNPEff is a fairly straightforward system. It needs a database of SNPs and a database of gene and gene/transcript positions and can give you whether the SNP is in a gene and whether the SNP causes a silent [synonymous](reference.html#synonymous) change (IE the codon the SNP changes is for the same amino acid before and after the SNP sequence change ) or whether it causes a more significant [non-synonymous](reference.html#non-synonymous) change that actually changes the amino acid at that codon so the protein changes.   
+SNPEff is a fairly straightforward system. It needs a database of SNPs and a database of gene and gene/transcript positions and can give you whether the SNP is in a gene and whether the SNP causes a silent [synonymous](reference.html#synonymous) change (IE the codon the SNP changes is for the same amino acid before and after the SNP sequence change ) or whether it causes a more significant [non-synonymous](reference.html#non-synonymous) change that actually changes the amino acid at that codon so the protein changes.
 
 These qualities are what we will look for in our candidate SNP approach - the most likely mutation causing SNPs will be:
 
 	* Homozygous
 	* Non-synonymous
 	* In a region enriched with homozygous SNPs
-	
+
 Once SNPEff is run, we have all the information we need to start to make candidates.
 
 >## 1. MPileup {.challenge}
-> You are provided with a new BAM file for _Arabidopsis_ chromosome 4 in the shared data library `SNP Calling`, use it to run `HTS SAMtools .. SAMtools mpileup`. Remember you'll need to load a reference genome, the `TAIR_10_chr4.fasta` file should be imported to your history for this purpose.  
+> You are provided with a new BAM file for _Arabidopsis_ chromosome 4 in the shared data library `SNP Calling`, use it to run `NGS: SAMtools .. SAMtools mpileup`. Remember you'll need to load a reference genome, the `TAIR_10_chr4.fasta` file should be imported to your history for this purpose.  
 >
 >	1. How do you make `SAMtools mpileup` output VCF or Mpileup?
->	2. What are differences in information between the two? 
+>	2. What are differences in information between the two?
 >	3. Generate an MPileup file and select appropriate `advanced options` to make sure you have a good enough mapping quality (~20) and base quality (~30) for reliable SNP calls.  
 >	4. What is the point of adding a maximum read depth?
 >	5. How does this run compare in execution time with earlier ones in this course? Why is there a difference?
 >
 
 >## It's taking ages... {.callout}
-> These are the largest datasets we use in this training. The reference is a whole 20 Mb _Arabidopsis_ chromosome, with full 30 deep covereage. The laptop VM takes a while to chug through it. 
+> These are the largest datasets we use in this training. The reference is a whole 20 Mb _Arabidopsis_ chromosome, with full 30 deep covereage. The laptop VM takes a while to chug through it.
 >
 > If you are getting bored, you can restrict the amount of the reference that SAMtools will churn through. Try looking in `Advanced Options` for `Select regions to call`. You can paste or type in a region in the format 'Chr4:1-100' - replacing the 1 and 100 with suitable start and stop coordinates. Try doing just 2000000.
 
 >## 2. VarScan {.challenge}
-> From the mpileup file you created in the challenge above, use `VarScan Mpileup` filter the positions to find the SNPs and make the criteria a bit more stringent. 
+> From the mpileup file you created in the challenge above, use `VarScan Mpileup` filter the positions to find the SNPs and make the criteria a bit more stringent.
 >
 >	1. Inspect the pileup (or run some SAMtools stats) to determine suitable values for the depth and quality parameters.
->	2. Our purpose is to clearly separate Homozygous and Heterozygous SNPs, which filters do you think we should use? What frequency values should we set to get many, good homozygous calls (hint: 100% frequency rules out some SNPs where a single miscalled read or base messes things up) 
+>	2. Our purpose is to clearly separate Homozygous and Heterozygous SNPs, which filters do you think we should use? What frequency values should we set to get many, good homozygous calls (hint: 100% frequency rules out some SNPs where a single miscalled read or base messes things up)
 >	3. How long does this take? What factors do you think affect the run time?
 
 > ## 3. SNPEff {.challenge}
-> SNPEff can be found in the `SNP annotation` tool set. Use SNPEff on the VCF file you generated (or the one in the shared data library `SNP Calling`)
+> SNPEff can be found in the `SNPEff` tool set. Use SNPEff on the VCF file you generated (or the one in the shared data library `SNP Calling`)
 >
 >	1. Make SNPEff run on just SNPs in the input VCF (our candidate SNP approach won't work on INDELS).
 >	2. How has SNPEff labelled the SNPs it generated?

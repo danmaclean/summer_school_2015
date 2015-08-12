@@ -101,44 +101,7 @@
 <h2 id="your-task-now-is-to-load-up-galaxy-and-run-some-reads-through-quality-control-and-trimming-prior-to-downstream-use."><span class="glyphicon glyphicon-pushpin"></span>Your task now is to load up Galaxy and run some reads through quality control and trimming, prior to downstream use.</h2>
 </div>
 <div class="panel-body">
-
-</div>
-</aside>
-<aside class="callout panel panel-info">
-<div class="panel-heading">
-<h2 id="power-up-the-vm"><span class="glyphicon glyphicon-pushpin"></span>Power Up The VM</h2>
-</div>
-<div class="panel-body">
-<ol style="list-style-type: decimal">
-<li>Start <code>VirtualBox</code> by double-clicking it’s application icon.</li>
-<li>Use <code>File</code> .. <code>Import Appliance</code> and select the <code>GCC2015-CandiSNP.ova</code> VM file.</li>
-<li>Wait until it finishes importing and press the green <code>start</code> button</li>
-<li>Login. The password is <code>12345</code></li>
-</ol>
-</div>
-</aside>
-<aside class="callout panel panel-info">
-<div class="panel-heading">
-<h2 id="connecting-to-the-internet"><span class="glyphicon glyphicon-pushpin"></span>Connecting to the internet</h2>
-</div>
-<div class="panel-body">
-<p>You may need to change the VirtualBox network adapter if you get a report like:</p>
-<pre class="error"><code>
-en3 network adapter not found
-</code></pre>
-<p>Try using VirtualBox’s other network settings under <code>Devices</code> .. <code>Network</code> .. <code>Network Settings..</code>. Usually you should select, <code>NAT</code>. You can tell whether it’s working by using the web browser within the machine and navigating to an external site e.g <a href="http://bbc.co.uk" class="uri">http://bbc.co.uk</a></p>
-</div>
-</aside>
-<aside class="callout panel panel-info">
-<div class="panel-heading">
-<h2 id="starting-galaxy"><span class="glyphicon glyphicon-pushpin"></span>Starting Galaxy</h2>
-</div>
-<div class="panel-body">
-<p>You can either:</p>
-<ol style="list-style-type: decimal">
-<li><p>Double click the <code>Launch Galaxy</code> icon on the Desktop. You’ll need to be patient, Galaxy takes a little while to launch. (it should take about a minute to launch, so don’t panic if it doesn’t ping into life immediately) Or</p></li>
-<li><p>Start a terminal <code>cd /var/git/galaxy</code>, <code>sh run.sh</code>, navigate to <code>localhost:8080</code> with the web browser.</p></li>
-</ol>
+<p>This practical is a bit different from the other ones we’ve done. It’s much less of a show and tell affair, this time the focus is on you to really do this analysis yourself, there is a <em>right</em> answer at the end - should you choose to try and reach it</p>
 </div>
 </aside>
 <section class="challenge panel panel-success">
@@ -146,7 +109,7 @@ en3 network adapter not found
 <h2 id="run-fastqc"><span class="glyphicon glyphicon-pencil"></span>1. Run FastQC</h2>
 </div>
 <div class="panel-body">
-<p>Use the reads in the <code>QC</code> <code>Shared Data</code> library. You will find the <code>FastQC</code> tool in the tool list under <code>HTS QC</code>. The reads are single ended from a mutagenised <em>Arabidopsis thaliana</em> (a model plant). They are Illumina <a href="reference.html#whole_genome_shotgun">Whole Genome Shotgun reads</a> so don’t have any multiplex adapters and the plants are grown in sterile culture so we aren’t expecting contamination.</p>
+<p>Use the reads in the <code>Candidate SNPs</code> <code>QC</code> Shared Data library. You will find the <code>FastQC</code> tool in the tool list under <code>NGS QC</code>. The reads are single ended from a mutagenised <em>Arabidopsis thaliana</em> (a model plant). They are Illumina <a href="reference.html#whole_genome_shotgun">Whole Genome Shotgun reads</a> so don’t have any multiplex adapters and the plants are grown in sterile culture so we aren’t expecting contamination.</p>
 <ol style="list-style-type: decimal">
 <li>How many reads are you using?</li>
 <li>What sort of output files do you get from FastQC?</li>
@@ -171,17 +134,15 @@ en3 network adapter not found
 <h2 id="clean-up-poor-quality-sequence"><span class="glyphicon glyphicon-pencil"></span>3. Clean Up Poor Quality Sequence</h2>
 </div>
 <div class="panel-body">
-<p>Use the <code>Trimmomatic</code> tool in <code>HTS QC</code>. Select an appropriate <code>Average quality required</code></p>
+<p>Use the <code>Trimmomatic</code> tool in <code>NGS QC</code>. Select an appropriate <code>Average quality required</code></p>
 <ol style="list-style-type: decimal">
-<li>Find a trimming strategy to get rid of contamination you observed in section <code>2.1</code>?</li>
+<li>Find a trimming strategy to get rid of contamination you observed in challenge <code>2.1</code>?</li>
 <li>Which trimming strategy improves the low quality reads</li>
 <li>Did it make any difference?</li>
 <li>How could you filter on size? If you needed to pass only good quality, full length sequences to the next step?</li>
 </ol>
 </div>
 </section>
-<h2 id="to-do" class="todo">TO DO</h2>
-<p>Set filename and url for VMs</p>
         </div>
       </div>
       </article>

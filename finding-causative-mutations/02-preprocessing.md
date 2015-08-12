@@ -6,7 +6,7 @@ minutes: 25
 ---
 
 > ## Did you download the lesson VM? {.callout}
-> You will need to already have some files downloaded. 
+> You will need to already have some files downloaded.
 >
 > 1. VirtualBox software for your machine
 > 2. The lesson Specific VM.
@@ -42,7 +42,7 @@ A typical output is like this:
 
 ![FastQC Summary Plot](img/fastqc.png)
 
-This is the `per base sequence quality`. The plot shows along the x-axis the position in the read and for each position in the reads it shows a box-plot of all the quality scores at that position. 
+This is the `per base sequence quality`. The plot shows along the x-axis the position in the read and for each position in the reads it shows a box-plot of all the quality scores at that position.
 
 Noticeably in this figure, the box plots to the left have much higher and tightly grouped quality scores than those on the right. This is typical of Illumina machine sequence, the quality decreases the further you get along the read. As you can infer from the red region of the plot background, Phred scores less than 20 are generally not trusted.
 
@@ -51,9 +51,9 @@ Noticeably in this figure, the box plots to the left have much higher and tightl
 >   Because of this discrepancy, it is necessary to sometimes be explicit about the sequence encoding in Galaxy. We do this by setting the data attributes of data files
 >
 
-We may (or may not) decide that we need to get rid of the lower quality sequence. 
+We may (or may not) decide that we need to get rid of the lower quality sequence.
 
-At the individual sequence read level, we can discard entire sequences if part is too poor or trim the read leaving the good part alone. One system for doing this is [Trimmomatic](reference.html#trimmomatic) which can perform a variety of trimming operations on sequence reads.  It can remove parts of reads from the left or right sides up to quality thresholds - it uses a sliding window average, rather than just a harsh cut-off. 
+At the individual sequence read level, we can discard entire sequences if part is too poor or trim the read leaving the good part alone. One system for doing this is [Trimmomatic](reference.html#trimmomatic) which can perform a variety of trimming operations on sequence reads.  It can remove parts of reads from the left or right sides up to quality thresholds - it uses a sliding window average, rather than just a harsh cut-off.
 
 > ## Sometimes we shouldn't trim {.callout}
 > If we do carry out trimming, then we may end up with lots of reads of different lengths - this can be a problem for some aligners and downstream tools, so sometimes trimming isn't the best strategy, we have to make context dependent decisions.
@@ -63,38 +63,11 @@ At the sequence sample level (e.g, the read file level), we may discover that ou
 ![The first few bases here are significantly enriched, this can be due to sequence adapters (if they were used) but if not, then the sequence is likely not good, even if the quality scores are fine](img/kmer_content.png)
 
 > ## Your task now is to load up Galaxy and run some reads through quality control and trimming, prior to downstream use. {.callout}
-  
-> ## Power Up The VM {.callout}
->	1. Start  `VirtualBox` by double-clicking it's application icon.
->	2. Use `File` .. `Import Appliance` and select the `GCC2015-CandiSNP.ova` VM file.
->	3. Wait until it finishes importing and press the green `start` button
->	4. Login. The password is `12345`
+> This practical is a bit different from the other ones we've done. It's much less of a show and tell affair, this time the focus is on you to really do this analysis yourself, there is a _right_ answer at the end - should you choose to try and reach it
 
-
-> ## Connecting to the internet {.callout}
-> You may need to change the VirtualBox network adapter if you get a report like:
->
->~~~ {.error}
->
-> en3 network adapter not found
->
->~~~
->
-> Try using VirtualBox's other network settings under `Devices` .. `Network` .. `Network Settings..`. Usually you should select, `NAT`. You can tell whether it's working by using the web browser within the machine and navigating to an external site e.g [http://bbc.co.uk](http://bbc.co.uk)
->
-
->## Starting Galaxy {.callout}
-> You can either:
->
->	1. Double click the `Launch Galaxy` icon on the Desktop. You'll need to be patient, Galaxy takes a little while to launch. 
->   (it should take about a minute to launch, so don't panic if it doesn't ping into life immediately)
->	Or
->	
->	2. Start a terminal `cd /var/git/galaxy`, `sh run.sh`, navigate to `localhost:8080` with the web browser.
->
 
 > ##1. Run FastQC {.challenge}
-> Use the reads in the `QC` `Shared Data` library. You will find the `FastQC` tool in the tool list under `HTS QC`.
+> Use the reads in the `Candidate SNPs` `QC` Shared Data library. You will find the `FastQC` tool in the tool list under `NGS QC`.
 > The reads are single ended from a mutagenised _Arabidopsis thaliana_ (a model plant). They are Illumina [Whole Genome Shotgun reads](reference.html#whole_genome_shotgun) so don't have any multiplex adapters and the plants are grown in sterile culture so we aren't expecting contamination.
 >
 > 1. How many reads are you using?
@@ -107,16 +80,12 @@ At the sequence sample level (e.g, the read file level), we may discover that ou
 > 1. Is there any evidence of contamination? Which report tells you?
 > 2. If there is, which sequence is contaminating?
 > 3. Which of the four files is the best?
-> 
+>
 
 > ##3. Clean Up Poor Quality Sequence {.challenge}
-> Use the `Trimmomatic` tool in `HTS QC`. Select an appropriate `Average quality required`
-> 
-> 1. Find a trimming strategy to get rid of contamination you observed in section `2.1`?
+> Use the `Trimmomatic` tool in `NGS QC`. Select an appropriate `Average quality required`
+>
+> 1. Find a trimming strategy to get rid of contamination you observed in challenge `2.1`?
 > 2. Which trimming strategy improves the low quality reads
 > 3. Did it make any difference?
 > 4. How could you filter on size? If you needed to pass only good quality, full length sequences to the next step?
-
-## TO DO {.todo}
-Set filename and url for VMs
-
