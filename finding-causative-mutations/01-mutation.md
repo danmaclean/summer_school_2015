@@ -17,7 +17,7 @@ minutes: 5
 
 The first step is to mutagenise a population of organisms, or cells or similar. Mutagenesis is basically causing damage to DNA. Lot's of things can do this, Wikipedia has a great page on [mutagens](https://en.wikipedia.org/wiki/Mutagen). In plant genetics, the mutagen we typically use for changing single nucleotides in DNA, things we call point mutations or Single Nucleotide Polymorphisms (SNPs), is EMS - [Ethyl methanesulfonate](https://en.wikipedia.org/wiki/Ethyl_methanesulfonate). EMS will predominantly make C's change to T's and G's change to A's. These mutations are distributed fairly uniformly throughout the genome.
 
-In practice we take a load of plant seeds and soak them in a solution of EMS. The EMS soaks in and damages the plant's DNA. 
+In practice we take a load of plant seeds and soak them in a solution of EMS. The EMS soaks in and damages the plant's DNA.
 
 This damages the DNA in **some** but **not all** of the cells in the seed.
 
@@ -25,16 +25,16 @@ This damages the DNA in **some** but **not all** of the cells in the seed.
 
 We grow up the seed (let's call the plants that grow up the M1 generation) and the cells in those M1 plants that descended from the mutagenised cells carry the mutations. Sometimes these will be cells in the germline - ones that beget seeds. The progeny of the M1 plants, that grow from mutation carrying seeds (let's call these progeny the M2) will all grow up with the mutation **in every cell** and eventually, by identifying the progeny plants carefully, we can get a population of plants which are homozygous for all the EMS SNP mutations we induced.  
 
-![A plant mutagenesis - or 'inducing heritable mutations' -  from Page & Grossniklaus, Nature Reviews Genetics 3, 124-136 doi:10.1038/nrg730](img/nrg730-i2.gif) 
+![A plant mutagenesis - or 'inducing heritable mutations' -  from Page & Grossniklaus, Nature Reviews Genetics 3, 124-136 doi:10.1038/nrg730](img/nrg730-i2.gif)
 
-> ##This same principle is true for any organism {.callout} 
-> 
+> ##This same principle is true for any organism {.callout}
+>
 > Whatever you want to do mutational genomics with, you will need to:
 >
 > 1. mutate
 > 2. select
 > 3. cross
-> 4. screen 
+> 4. screen
 
 ## Genetic screens  
 
@@ -42,7 +42,7 @@ Once we have a mutagenised population we can start to select the individuals in 
 
 ![One of these plants is affected in the pathways that control flowering time - the right hand plant flowers early. Source: Detlef Weigel](img/tall_plant.jpg)
 
-## Recombination during crossing causes changes in SNP density away from the 
+## Recombination during crossing causes changes in SNP density away from the
 All these crosses cause recombination in the chromosomes that bring in homologous parts from the line being used to cross. This happens at a greater frequency away from the mutation that we are selecting for such that regions further from the selected mutation carry fewer and fewer of the homozygous mutations.  
 
 ![Consider crossing two chromosomes. Recombination causes the parts furthest from the selected mutation to lose the homozygous mutations as a function of distance from the selected mutation. Source: Ryan Austin, http://bar.utoronto.ca/ngm/description.html](img/ngm.png)
@@ -55,7 +55,7 @@ This statistical difference, a region of high homozygous SNPs around the mutatio
 >
 >
 > ~~~ {.input}
-> 
+>
 >  read 1                            CGATCGATCGCATCT   GATCGATCGACCG   read 4
 >  read 2                         GATCGATCGCAT     ATACGATCGATCGAC     read 5
 >  read 3                  CGTGCGCGATCGA              CGATCGATCGATCGAT read 6
@@ -71,7 +71,7 @@ This statistical difference, a region of high homozygous SNPs around the mutatio
 > ## Challenge {.challenge}
 >  In a mutagenesis, after crosses, why are we concerned with homozygous SNPS?
 >
-> 1. They are the SNPs we induced with mutagens and carefully selected for with crosses. 
+> 1. They are the SNPs we induced with mutagens and carefully selected for with crosses.
 > 2. They are the general 'background' SNPs, so are a good control.
 > 3. Homozygous SNPs ALWAYS cause a phenotypic effect.
 > 4. Homozygous SNPs are easier to detect.
