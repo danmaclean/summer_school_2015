@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Finding Effector Genes and Proteins in DNA Sequence
+title: Finding Effector Genes and Proteins
 subtitle: Finding Signal Peptides
 minutes: 15
 ---

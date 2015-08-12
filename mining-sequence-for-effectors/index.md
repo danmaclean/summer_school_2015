@@ -1,9 +1,9 @@
 ---
 layout: lesson
-title: Finding Effector Genes and Proteins in DNA Sequence
+title: Finding Effector Genes and Proteins
 ---
 
-In this lesson we will look at some of the varied techniques for finding a particular type of gene in some DNA sequence.  
+In this lesson we will look at some of the varied techniques for finding a particular type of gene/protein in some provided sequence of varied types.  
 
 >## Prerequisites {.prereq}
 > For this course you are going to need to know a very small amount of basic effector biology (you'll learn a lot more from real experts later in the Summer School) the link here on bacterial effectors should do as suitable background reading for this lesson.

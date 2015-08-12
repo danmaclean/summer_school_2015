@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
-    <title>Finding Causative Mutations: Finding Causative Mutations With A Candidate SNP Approach</title>
+    <title>Finding Effector Genes and Proteins</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
@@ -31,60 +31,12 @@
       <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-                    <a href="index.html"><h1 class="title">Finding Causative Mutations With A Candidate SNP Approach</h1></a>
+                    <a href="index.html"><h1 class="title">Finding Effector Genes and Proteins</h1></a>
           <h2 class="subtitle">Reference</h2>
           <h2 id="glossary">Glossary</h2>
 <dl>
-<dt><span id="mutational-genomics">Mutational Genomics</span></dt>
-<dd>an experimental process that combines mutagenesis and genomics tools to help us discern the functions of genes.
-</dd>
-<dt><span id="fastq">Fastq</span></dt>
-<dd>a text-based sequence file format that incorporates sequence and quality scores, see <a href="https://en.wikipedia.org/wiki/FASTQ_format" class="uri">https://en.wikipedia.org/wiki/FASTQ_format</a>
-</dd>
-<dt><span id="ascii">ASCII</span></dt>
-<dd>An acronym from American Standard Code for Information Interchange. Does things like describe letter characters as numbers that the computer can understand and provides the basis of the Fastq quality encoding <a href="https://en.wikipedia.org/wiki/ASCII#ASCII_printable_code_chart" class="uri">https://en.wikipedia.org/wiki/ASCII#ASCII_printable_code_chart</a>
-</dd>
-<dt><span id="phred">Phred</span></dt>
-<dd>A score that describes the likelihood of error in a single base call from a sequencing machine <a href="https://en.wikipedia.org/wiki/Phred_quality_score" class="uri">https://en.wikipedia.org/wiki/Phred_quality_score</a>
-</dd>
-<dt><span id="fastqc">FastQC</span></dt>
-<dd>A useful and widely used sequence quality assessment program <a href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/" class="uri">http://www.bioinformatics.babraham.ac.uk/projects/fastqc/</a>
-</dd>
-<dt><span id="encoding">Encoding</span></dt>
-<dd>A confusion in exactly what symbol represents what number in Phred quality scores <a href="https://en.wikipedia.org/wiki/FASTQ_format#Encoding" class="uri">https://en.wikipedia.org/wiki/FASTQ_format#Encoding</a>
-</dd>
-<dt><span id="trimmomatic">Trimmomatic</span></dt>
-<dd><a href="http://www.usadellab.org/cms/?page=trimmomatic" class="uri">http://www.usadellab.org/cms/?page=trimmomatic</a>
-</dd>
-<dt><span id="kmer">Kmer</span></dt>
-<dd>A sequence of length <code>k</code>. Often used to describe the population of all <code>k</code>-length sub-sequences of a larger sequence or sequence set, such as a set of reads.
-</dd>
-<dt><span id="whole-genome-shotgun">Whole Genome Shotgun</span></dt>
-<dd>A sequencing method whereby the chromosomes are shattered into fragments and each sequenced individually.
-</dd>
-<dt><span id="genetic-mapping">Genetic Mapping</span></dt>
-<dd>A method where molecular markers a ordered relative to each other using molecular genetic techniques <a href="https://en.wikipedia.org/wiki/Gene_mapping" class="uri">https://en.wikipedia.org/wiki/Gene_mapping</a>
-</dd>
-<dt><span id="burrows-wheeler-transform">Burrows Wheeler Transform</span></dt>
-<dd>A method for creating an index of subsequences so a sequence space can be searched very quickly <a href="http://en.wikipedia.org/wiki/Burrows–Wheeler_transform" class="uri">http://en.wikipedia.org/wiki/Burrows–Wheeler_transform</a>
-</dd>
-<dt><span id="bwa">BWA</span></dt>
-<dd>A fast, general purpose HTS read aligner that uses Burrows-Wheeler Transforms. <a href="http://bio-bwa.sourceforge.net/" class="uri">http://bio-bwa.sourceforge.net/</a>
-</dd>
-<dt><span id="sam">SAM</span></dt>
-<dd>An uncompressed, text- and line-based format for recording sequence alignments. <a href="https://samtools.github.io/hts-specs/SAMv1.pdf" class="uri">https://samtools.github.io/hts-specs/SAMv1.pdf</a>
-</dd>
-<dt><span id="paired-end-reads">Paired-end Reads</span></dt>
-<dd>Some sequencing strategies sequence the two ends of a fragment of DNA of known length but not the middle bit, so that we end up with two reads where we know the distance between them. We can use the distance to better align each read by looking for alignments that fit with the real distance between.
-</dd>
-<dt><span id="pileup">PileUp</span></dt>
-<dd>A text based format that describes in a base-by-base way, the alignments of nucleotides from reads over each position in the genome. <a href="http://samtools.sourceforge.net/pileup.shtml">A guide to the format can be found here</a>
-</dd>
-<dt><span id="synonymous">Synonymous</span></dt>
-<dd>The evolutionary substitution of one base for another in an exon of a gene coding for a protein, such that the produced amino acid sequence is not modified. <a href="https://en.wikipedia.org/wiki/Synonymous_substitution" class="uri">https://en.wikipedia.org/wiki/Synonymous_substitution</a>
-</dd>
-<dt><span id="non-synonymous">Non-synonymous</span></dt>
-<dd>A nucleotide mutation that alters the amino acid sequence of a protein.<a href="https://en.wikipedia.org/wiki/Nonsynonymous_substitution" class="uri">https://en.wikipedia.org/wiki/Nonsynonymous_substitution</a>
+<dt><span id="todo">ToDo</span></dt>
+<dd>Finish this glossary
 </dd>
 </dl>
         </div>
