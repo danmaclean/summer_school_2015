@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Finding Causative Mutations With A Candidate SNP Approach
+title: Finding Effector Genes and Proteins
 subtitle: Instructor's Guide
 ---
 

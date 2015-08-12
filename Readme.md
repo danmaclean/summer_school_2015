@@ -1,5 +1,5 @@
 # Pathogenomics Practical Session
-## The Sainsbury Laboratory Summer School 
+## The Sainsbury Laboratory Summer School
 ### Tuesday 18th August
 
 #### Dan MacLean and Christian Schudoma
@@ -22,4 +22,3 @@ Click the following links to the materials for each session.
 1. [Session 1 - Assembling a draft genome](assembling-a-draft-genome/index.html)
 2. [Session 2 - Running an effector mining pipeline](mining-sequence-for-effectors/index.html)
 3. [Session 3 - Finding causative mutations with a Candidate SNP approach](finding-causative-mutations/index.html)
-
